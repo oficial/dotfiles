@@ -1,0 +1,135 @@
+" Plugins instalados:
+" - CtrlP: Simula o CTRL+P do sublime para buscas rapidas   (https://github.com/ctrlpvim/ctrlp.vim)
+" - tcomment: Simula o CTRL+/ para comentario de linhas     (https://github.com/tomtom/tcomment_vim)
+" - Completor.vim: plugin de autocomplete (DESATIVADO)      (https://github.com/maralla/completor.vim)
+
+" Configuracoes diversas
+syntax on
+set t_Co=256
+set background=dark
+set encoding=utf8
+set ruler
+" set spell
+set mouse=a	"Ativa o suporte ao mouse (para selecionar texto p.e.)
+set hidden  "Permite mudar de buffer sem salvar as alterações realizadas
+set nocompatible "Desabilita compatibilidade com VI
+set number 	"Mostra numero da linha
+set nowrap	"Dasabilita quebra de linha
+set expandtab	"Troca tabs por espacos
+set tabstop=4	"Quantidade de espacos do tab
+set shiftwidth=4 "Quantidade de espacos do tab
+set softtabstop=4 "Faz o backspace tratar 4 espacos como tab
+set ignorecase	"Buscas case insensitive
+set incsearch	"Destaca resultado da busca enquanto digita
+set hlsearch    "Destaca todas as ocorrencias da busca
+set showmatch	"Mostra o casamento de {}, [] e ()
+set nobackup	"Desabilita o uso de arquivos de backup
+set nostartofline "Permanece na mesma coluna ao mudar de linha
+set warn        " Warning when a shell cmd is used while the buffer has been changed.
+set shm+=I      " Start without the intro message
+set shm+=s      " Suppress 'search hit BOTTOM, continuing at TOP' message
+set shm+=tT     " Truncate long filenames/messages
+set nowritebackup
+set noswapfile
+set dictionary=/usr/share/dict/words,/usr/share/dict/brazilian
+set complete+=k
+set ttyfast
+" set cursorline
+set laststatus=2 "Always show the statusline
+set scrolloff=2  "Mostra pelo menos 2 linhas acima e abaixo do cursor
+set sidescroll=1     " min. number of columns to scroll horizontally.
+set sidescrolloff=2  " min. number of columns to keep to the left/right of the cursor
+set fillchars=stl:\=,stlnc:\-,vert:\ ,fold:-,diff:-
+
+set wildmenu
+set wildmode=full
+
+set foldmethod=marker
+set foldenable
+
+set splitbelow
+set splitright
+
+set noerrorbells     " Shut up!
+set novisualbell     " Don't flicker!
+set t_vb=            " Holy ..., be quite!
+
+"Desativa a troca de tab por espacos quando o arquivo for um makefile 
+autocmd FileType make setlocal noexpandtab
+
+"==========================================
+"Configuracao do navegador de arquivos
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+" augroup ProjectDrawer
+"   autocmd!
+"   autocmd VimEnter * :Vexplore
+" augroup END
+
+"Configuracao do CtrlP
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_cmd = 'CtrlP'
+"Configuracao do plugin Completor.vim"
+" let g:completor_clang_binary = '/usr/bin/clang-7'
+
+"Atalhos e/ou mapeamentos de teclado
+map - dd
+map <space> viw
+
+"Redimensionar splits
+nmap <C-Left> <C-W><<C-W><
+nmap <C-Right> <C-W>><C-W>>
+nmap <C-Up> <C-W>+<C-W>+
+nmap <C-Down> <C-W>-<C-W>-
+
+inoremap <c-w> <ESC>:w<CR>
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+
+"Usa F4 para ativar/desativar o hilight das buscas
+noremap <F3> :set hlsearch! hlsearch?<CR> 
+
+"StatusLine configuration
+" function! GitBranch()
+"   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+" endfunction
+"
+" function! StatuslineGit()
+"   let l:branchname = GitBranch()
+"   return strlen(l:branchname) > 0?'('.l:branchname.') ':''
+" endfunction
+"
+set statusline= "Limpa qualquer definicao anterior
+" set statusline+=%#Comment#              "Seta a cor do grupo 'Comment'
+" set statusline+=%{StatuslineGit()}      "Coloca o valor retornado pela funcao: nome do branch
+set statusline+=%#LineNr#               "Seta a cor do grupo 'LineNr'
+set statusline+=%f                      "Path do arquivo no buffer atual
+set statusline+=\ %m                    "Flag indicando se o arquivo foi modificado '[+]'
+set statusline+=%#Normal#               "Seta a cor branca
+set statusline+=%=                      "Marca o fim dos itens alinhados a esquerda e inicio dos alinhados a direita
+set statusline+=%#Special#              "Seta a cor do grupo 'Special'
+set statusline+=\ %y                    "Espaço em branco e o tipo do arquivo
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}  "Espaço em branco e tipo de encoding
+set statusline+=\ \[%{&fileformat}\]    "Espaço em branco e o formato do arquivo 'unix/dos'
+set statusline+=\ %p%%                  "Percentagem do arquivo
+set statusline+=\ %l:%c                 "Linha e coluna
+set statusline+=\                       "Espaço em branco
+
+"Tentativa de fazer a statusline do netrw ficar diferente
+" aug NetrwStatusLine
+"     au!
+"     au FileType netrwlist setlocal statusline="Arquivos"
+" aug END
+augroup greeting
+    autocmd!
+    autocmd VimEnter * :echo "Olá Ricardo >^.^<"
+augroup END
+
