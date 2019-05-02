@@ -2,7 +2,7 @@ GREEN="\[$(tput setaf 2)\]"
 RESET="\[$(tput sgr0)\]"
 PS1="${GREEN}\w${RESET}> "
 
-PATH=$PATH:/home/ricardo/dev/depot_tools
+PATH=/home/ricardo/bin/vim/bin:/home/ricardo/dev/depot_tools:$PATH
 
 export PATH PS1
 

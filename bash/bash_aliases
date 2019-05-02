@@ -1,0 +1,9 @@
+alias lss='ls -lhSF --color=always --group-directories-first --time-style=+"[%d/%m/%Y %T]"'
+alias ctl='systemctl'
+alias ctlu='systemctl --user'
+alias sctl='sudo systemctl'
+alias pstop="ps -A --sort -rsz -o comm,pmem,pcpu | awk 'NR<=20'"
+alias meuip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias pastebin="curl -F c=@- https://ptpb.pw/"
+alias nuget="mono /home/ricardo/dev/NugetCredentialProviderBundle/NuGet.exe"
+

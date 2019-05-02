@@ -126,6 +126,6 @@ noremap <F3> :set hlsearch! hlsearch?<CR>
 "Uma pequena mensagem ao iniciar...
 augroup greeting
     autocmd!
-    autocmd VimEnter * :echo "Olá Ricardo >^.^<"
+    autocmd VimEnter * :echo "Olá Ricardo  >^.^<"
 augroup END
 
