@@ -6,9 +6,8 @@
 "==========================================
 " Configuracoes diversas
 "==========================================
-syntax on           "Ativa o reconhecimento de sintaxe
 set t_Co=256        "Informa suporte a 256 cores
-set background=dark
+" set background=dark
 set encoding=utf8
 set ruler           "Mostra linha:coluna
 set mouse=a	        "Ativa o suporte ao mouse (para selecionar texto p.e.)
@@ -20,6 +19,7 @@ set expandtab	    "Troca tabs por espacos
 set tabstop=4	    "Quantidade de espacos do tab
 set shiftwidth=4    "Quantidade de espacos do tab
 set softtabstop=4   "Faz o backspace tratar 4 espacos como tab
+set backspace=indent,eol,start
 set ignorecase	    "Buscas case insensitive
 set incsearch	    "Destaca resultado da busca enquanto digita
 set hlsearch        "Destaca todas as ocorrencias da busca
@@ -52,6 +52,7 @@ set t_vb=
 " set spell
 " set cursorline
 
+
 "StatusLine configuration
 set statusline= "Limpa qualquer definicao anterior
 set statusline+=%#LineNr#               "Seta a cor do grupo 'LineNr'
@@ -66,15 +67,6 @@ set statusline+=\ \[%{&fileformat}\]    "Espaço em branco e o formato do arquiv
 set statusline+=\ %p%%                  "Percentagem do arquivo
 set statusline+=\ %l:%c                 "Linha e coluna
 set statusline+=\                       "Espaço em branco
-
-
-"==========================================
-"modificações de cores
-"==========================================
-
-"Altera a cor do auto-complete de rosa para cinza
-highlight Pmenu ctermbg=gray
-
 
 "==========================================
 "Desativa a troca de tab por espacos quando o arquivo for um makefile 
@@ -95,6 +87,7 @@ let g:netrw_winsize = 25
 "==========================================
 "Atalhos e/ou mapeamentos de teclado
 "==========================================
+let mapleader="\\"
 
 "Mapeamentos do modo normal: Redimensionar splits
 nmap <C-Left> <C-w><
@@ -118,6 +111,8 @@ noremap <F1> :help <C-r><C-w><CR>
 "F3: limpa o destaque nas palavras após uma busca
 noremap <F3> :set hlsearch! hlsearch?<CR> 
 
+nnoremap <leader><Left> <ESC>:bp<CR>
+nnoremap <leader><Right> <ESC>:bn<CR>
 
 "==========================================
 "Comandos
@@ -128,4 +123,18 @@ augroup greeting
     autocmd!
     autocmd VimEnter * :echo "Olá Ricardo  >^.^<"
 augroup END
+
+
+"Ativa o reconhecimento de sintaxe
+filetype plugin on
+syntax on           
+
+
+"==========================================
+"modificações de cores
+"==========================================
+
+"Altera a cor do auto-complete de rosa para cinza
+highlight Pmenu ctermbg=gray
+highlight VertSplit ctermbg=0 ctermfg=White
 
