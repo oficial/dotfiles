@@ -14,11 +14,11 @@ set mouse=a	        "Ativa o suporte ao mouse (para selecionar texto p.e.)
 set hidden          "Permite mudar de buffer sem salvar as alterações realizadas
 set nocompatible    "Desabilita compatibilidade com VI
 set number 	        "Mostra numero da linha
-set nowrap	        "Dasabilita quebra de linha
-set expandtab	    "Troca tabs por espacos
-set tabstop=4	    "Quantidade de espacos do tab
-set shiftwidth=4    "Quantidade de espacos do tab
-set softtabstop=4   "Faz o backspace tratar 4 espacos como tab
+set nowrap	        "Desabilita quebra de linha
+set expandtab	    "Troca tabs por espaços
+set tabstop=4	    "Quantidade de espaços do tab
+set shiftwidth=4    "Quantidade de espaços do tab
+set softtabstop=4   "Faz o backspace tratar 4 espaços como tab
 set backspace=indent,eol,start
 set ignorecase	    "Buscas case insensitive
 set incsearch	    "Destaca resultado da busca enquanto digita
@@ -39,7 +39,7 @@ set laststatus=2    "Always show the statusline
 set scrolloff=2     "Mostra pelo menos 2 linhas acima e abaixo do cursor
 set sidescroll=1    " min. number of columns to scroll horizontally.
 set sidescrolloff=2 " min. number of columns to keep to the left/right of the cursor
-set fillchars=stl:\=,stlnc:\-,vert:\ ,fold:-,diff:-
+set fillchars=stl:\=,stlnc:\-,vert:\|,fold:-,diff:-
 set wildmenu
 set wildmode=full
 set foldmethod=marker
@@ -48,17 +48,16 @@ set splitbelow
 set splitright
 set noerrorbells
 set novisualbell
+set nomodeline
 set t_vb=
-" set spell
+" set spell spelllang=pt
 " set cursorline
 
-
 "StatusLine configuration
-set statusline= "Limpa qualquer definicao anterior
+set statusline= "Limpa qualquer definição anterior
 set statusline+=%#LineNr#               "Seta a cor do grupo 'LineNr'
 set statusline+=%f                      "Path do arquivo no buffer atual
 set statusline+=\ %m                    "Flag indicando se o arquivo foi modificado '[+]'
-set statusline+=%#Normal#               "Seta a cor branca
 set statusline+=%=                      "Marca o fim dos itens alinhados a esquerda e inicio dos alinhados a direita
 set statusline+=%#Special#              "Seta a cor do grupo 'Special'
 set statusline+=\ %y                    "Espaço em branco e o tipo do arquivo
@@ -69,13 +68,13 @@ set statusline+=\ %l:%c                 "Linha e coluna
 set statusline+=\                       "Espaço em branco
 
 "==========================================
-"Desativa a troca de tab por espacos quando o arquivo for um makefile 
+"Desativa a troca de tab por espaços quando o arquivo for um makefile
 "==========================================
 autocmd FileType make setlocal noexpandtab
 
 
 "==========================================
-"Configuracao do navegador de arquivos
+"Configuração do navegador de arquivos
 "==========================================
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -87,13 +86,12 @@ let g:netrw_winsize = 25
 "==========================================
 "Atalhos e/ou mapeamentos de teclado
 "==========================================
-let mapleader="\\"
 
 "Mapeamentos do modo normal: Redimensionar splits
-nmap <C-Left> <C-w><
-nmap <C-Right> <C-w>>
-nmap <C-Up> <C-W>+<C-W>+
-nmap <C-Down> <C-W>-<C-W>-
+" nmap <C-Left> <C-w><
+" nmap <C-Right> <C-w>>
+" nmap <C-Up> <C-W>+<C-W>+
+" nmap <C-Down> <C-W>-<C-W>-
 nmap <space> viw
 nmap - dd
 
@@ -107,34 +105,33 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 
 "F1: aciona o help para a palavra sob o cursor
-noremap <F1> :help <C-r><C-w><CR>
 "F3: limpa o destaque nas palavras após uma busca
-noremap <F3> :set hlsearch! hlsearch?<CR> 
-
-nnoremap <leader><Left> <ESC>:bp<CR>
-nnoremap <leader><Right> <ESC>:bn<CR>
+noremap  <F1> :help <C-r><C-w><CR>
+noremap  <F3> :set hlsearch! hlsearch?<CR> 
+nnoremap <C-Left> <ESC>:bp<CR>
+nnoremap <C-Right> <ESC>:bn<CR>
 
 "==========================================
 "Comandos
 "==========================================
-
 "Uma pequena mensagem ao iniciar...
 augroup greeting
     autocmd!
     autocmd VimEnter * :echo "Olá Ricardo  >^.^<"
 augroup END
 
-
 "Ativa o reconhecimento de sintaxe
 filetype plugin on
 syntax on           
 
-
 "==========================================
 "modificações de cores
 "==========================================
-
 "Altera a cor do auto-complete de rosa para cinza
-highlight Pmenu ctermbg=gray
-highlight VertSplit ctermbg=0 ctermfg=White
+highlight Pmenu      cterm=none  ctermbg=gray       ctermfg=black
+highlight PmenuSel   cterm=none  ctermbg=darkgray   ctermfg=white
+highlight VertSplit  cterm=none  ctermbg=black      ctermfg=White
+highlight Search     cterm=none  ctermbg=darkyellow ctermfg=black
+highlight MatchParen cterm=none  ctermbg=none       ctermfg=red
+highlight SpellBad   cterm=none  ctermbg=darkgray   ctermfg=darkred
 
