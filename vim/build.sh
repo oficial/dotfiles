@@ -1,8 +1,7 @@
 #!/bin/sh
 
-DIR=$(mktemp -d)
-
-cd $DIR
+echo "Build no diretório temporário /tmp"
+cd /tmp
 
 git clone https://github.com/vim/vim.git
 
@@ -28,5 +27,4 @@ mkdir -p ~/bin/vim
 make
 
 make install
-
 

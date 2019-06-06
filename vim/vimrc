@@ -7,7 +7,6 @@
 " Configuracoes diversas
 "==========================================
 set t_Co=256        "Informa suporte a 256 cores
-" set background=dark
 set encoding=utf8
 set ruler           "Mostra linha:coluna
 set mouse=a	        "Ativa o suporte ao mouse (para selecionar texto p.e.)
@@ -108,6 +107,9 @@ inoremap {<CR> {<CR>}<ESC>O
 "F3: limpa o destaque nas palavras após uma busca
 noremap  <F1> :help <C-r><C-w><CR>
 noremap  <F3> :set hlsearch! hlsearch?<CR> 
+noremap  <F5> :source ~/.vimrc<CR>
+noremap  <F4> :bd<CR>
+noremap  <S-F4> :bd!<CR>
 nnoremap <C-Left> <ESC>:bp<CR>
 nnoremap <C-Right> <ESC>:bn<CR>
 
@@ -120,18 +122,20 @@ augroup greeting
     autocmd VimEnter * :echo "Olá Ricardo  >^.^<"
 augroup END
 
-"Ativa o reconhecimento de sintaxe
+"Ativa o reconhecimento de sintaxe e padrão de cores
 filetype plugin on
 syntax on           
+colorscheme vimdark
 
 "==========================================
 "modificações de cores
 "==========================================
 "Altera a cor do auto-complete de rosa para cinza
-highlight Pmenu      cterm=none  ctermbg=gray       ctermfg=black
-highlight PmenuSel   cterm=none  ctermbg=darkgray   ctermfg=white
-highlight VertSplit  cterm=none  ctermbg=black      ctermfg=White
-highlight Search     cterm=none  ctermbg=darkyellow ctermfg=black
-highlight MatchParen cterm=none  ctermbg=none       ctermfg=red
-highlight SpellBad   cterm=none  ctermbg=darkgray   ctermfg=darkred
+" highlight Pmenu      cterm=none  ctermbg=gray       ctermfg=black
+" highlight PmenuSel   cterm=none  ctermbg=darkgray   ctermfg=white
+" highlight VertSplit  cterm=none  ctermbg=black      ctermfg=White
+" highlight Search     cterm=none  ctermbg=darkyellow ctermfg=black
+" highlight MatchParen cterm=none  ctermbg=none       ctermfg=red
+" highlight SpellBad   cterm=none  ctermbg=darkgray   ctermfg=darkred
+highlight EndOfBuffer ctermbg=black ctermfg=black guibg=black guifg=black
 
