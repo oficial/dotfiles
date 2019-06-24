@@ -49,7 +49,7 @@ set noerrorbells
 set novisualbell
 set nomodeline
 set t_vb=
-" set spell spelllang=pt
+set spell spelllang=en,pt
 " set cursorline
 
 "StatusLine configuration
@@ -138,4 +138,5 @@ colorscheme vimdark
 " highlight MatchParen cterm=none  ctermbg=none       ctermfg=red
 " highlight SpellBad   cterm=none  ctermbg=darkgray   ctermfg=darkred
 highlight EndOfBuffer ctermbg=black ctermfg=black guibg=black guifg=black
+highlight SpellBad    ctermbg=black ctermfg=darkred
 
