@@ -1,19 +1,18 @@
-" Plugins instalados:
-" - CtrlP: Simula o CTRL+P do sublime para buscas rapidas   (https://github.com/ctrlpvim/ctrlp.vim)
+" Plugins:
 " - tcomment: Simula o CTRL+/ para comentario de linhas     (https://github.com/tomtom/tcomment_vim)
-" - Completor.vim: plugin de autocomplete (DESATIVADO)      (https://github.com/maralla/completor.vim)
+" - CtrlP: Simula o CTRL+P do sublime para buscas rapidas   (https://github.com/ctrlpvim/ctrlp.vim)
 
-"==========================================
-" Configuracoes diversas
-"==========================================
+" Configuracoes diversas {{{
+
 set t_Co=256        "Informa suporte a 256 cores
 set encoding=utf8
 set ruler           "Mostra linha:coluna
-set mouse=a	        "Ativa o suporte ao mouse (para selecionar texto p.e.)
+set mouse=a         "Ativa o suporte ao mouse (para selecionar texto p.e.)
 set hidden          "Permite mudar de buffer sem salvar as alterações realizadas
 set nocompatible    "Desabilita compatibilidade com VI
-set number 	        "Mostra numero da linha
-set nowrap	        "Desabilita quebra de linha
+set number          "Mostra numero da linha
+set nowrap          "Desabilita quebra de linha
+set wrapscan        "Search wrap at the end of the file
 set expandtab	    "Troca tabs por espaços
 set tabstop=4	    "Quantidade de espaços do tab
 set shiftwidth=4    "Quantidade de espaços do tab
@@ -25,12 +24,13 @@ set hlsearch        "Destaca todas as ocorrencias da busca
 set showmatch	    "Mostra o casamento de {}, [] e ()
 set nobackup	    "Desabilita o uso de arquivos de backup
 set nostartofline   "Permanece na mesma coluna ao mudar de linha
-set warn            " Warning when a shell cmd is used while the buffer has been changed.
-set shm+=I          " Start without the intro message
-set shm+=s          " Suppress 'search hit BOTTOM, continuing at TOP' message
-set shm+=tT         " Truncate long filenames/messages
-set nowritebackup
-set noswapfile
+set warn            "Warning when a shell cmd is used while the buffer has been changed.
+set shortmess+=I    "Start without the intro message
+set shortmess+=s    "Suppress 'search hit BOTTOM, continuing at TOP' message
+set shortmess+=tT   "Truncate long filenames/messages
+set shortmess+=a    "Truncate long filenames/messages
+set nowritebackup   "Do not create backupfile
+set noswapfile      "Do not create a swapfile
 set dictionary=/usr/share/dict/words,/usr/share/dict/brazilian
 set complete+=k
 set ttyfast
@@ -38,9 +38,9 @@ set laststatus=2    "Always show the statusline
 set scrolloff=2     "Mostra pelo menos 2 linhas acima e abaixo do cursor
 set sidescroll=1    " min. number of columns to scroll horizontally.
 set sidescrolloff=2 " min. number of columns to keep to the left/right of the cursor
-set fillchars=stl:\=,stlnc:\-,vert:\|,fold:-,diff:-
 set wildmenu
 set wildmode=full
+set wildignore+=*.so,*~,*/.git/*
 set foldmethod=marker
 set foldenable
 set splitbelow
@@ -49,10 +49,18 @@ set noerrorbells
 set novisualbell
 set nomodeline
 set t_vb=
-set spell spelllang=en,pt
+" set spell spelllang=en,pt
 " set cursorline
-
-"StatusLine configuration
+set confirm
+set history=2000
+set timeoutlen=500
+set showmatch       " Jump to matching bracket
+set matchpairs+=<:> " Add HTML brackets to pair matching
+set matchtime=1     " Tenths of a second to show the matching paren
+set list
+set fillchars=stl:\=,stlnc:\-,vert:\|,fold:-,diff:-
+" set listchars=tab:»·,nbsp:+,trail:.,extends:→,precedes:←,space:\ ,eol:<
+set listchars=tab:»·,trail:.,extends:→,precedes:←,space:\ ,nbsp:+
 set statusline= "Limpa qualquer definição anterior
 set statusline+=%#LineNr#               "Seta a cor do grupo 'LineNr'
 set statusline+=%f                      "Path do arquivo no buffer atual
@@ -65,26 +73,17 @@ set statusline+=\ \[%{&fileformat}\]    "Espaço em branco e o formato do arquiv
 set statusline+=\ %p%%                  "Percentagem do arquivo
 set statusline+=\ %l:%c                 "Linha e coluna
 set statusline+=\                       "Espaço em branco
+"}}}
 
-"==========================================
-"Desativa a troca de tab por espaços quando o arquivo for um makefile
-"==========================================
-autocmd FileType make setlocal noexpandtab
-
-
-"==========================================
-"Configuração do navegador de arquivos
-"==========================================
+" Configuração do navegador de arquivos NetRW {{{
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+"}}}
 
-
-"==========================================
-"Atalhos e/ou mapeamentos de teclado
-"==========================================
+" Mapeamentos de tecla {{{
 
 "Mapeamentos do modo normal: Redimensionar splits
 " nmap <C-Left> <C-w><
@@ -107,30 +106,41 @@ inoremap {<CR> {<CR>}<ESC>O
 "F3: limpa o destaque nas palavras após uma busca
 noremap  <F1> :help <C-r><C-w><CR>
 noremap  <F3> :set hlsearch! hlsearch?<CR> 
-noremap  <F5> :source ~/.vimrc<CR>
+noremap  <F5> :source ~/.vim/vimrc<CR>
 noremap  <F4> :bd<CR>
 noremap  <S-F4> :bd!<CR>
 nnoremap <C-Left> <ESC>:bp<CR>
 nnoremap <C-Right> <ESC>:bn<CR>
+"}}}
 
-"==========================================
-"Comandos
-"==========================================
+" Comandos {{{
+
 "Uma pequena mensagem ao iniciar...
 augroup greeting
     autocmd!
     autocmd VimEnter * :echo "Olá Ricardo  >^.^<"
 augroup END
 
+augroup configgroup
+    autocmd!
+    autocmd VimEnter * highlight clear
+    "Desativa a troca de tab por espaços quando o arquivo for um makefile
+    autocmd BufEnter Makefile setlocal noexpandtab 
+augroup END
+
+"}}}
+
+" Modificações de cor e sintaxe {{{
+
 "Ativa o reconhecimento de sintaxe e padrão de cores
 filetype plugin on
-syntax on           
+syntax on
 colorscheme vimdark
 
-"==========================================
-"modificações de cores
-"==========================================
-"Altera a cor do auto-complete de rosa para cinza
+let g:pascal_delphi=1
+let g:pascal_fpc=1
+
+" Altera definições de cor
 " highlight Pmenu      cterm=none  ctermbg=gray       ctermfg=black
 " highlight PmenuSel   cterm=none  ctermbg=darkgray   ctermfg=white
 " highlight VertSplit  cterm=none  ctermbg=black      ctermfg=White
@@ -140,3 +150,5 @@ colorscheme vimdark
 highlight EndOfBuffer ctermbg=black ctermfg=black guibg=black guifg=black
 highlight SpellBad    ctermbg=black ctermfg=darkred
 
+
+"}}}
