@@ -123,7 +123,7 @@ augroup END
 
 augroup configgroup
     autocmd!
-    autocmd VimEnter * highlight clear
+    " autocmd VimEnter * highlight clear
     "Desativa a troca de tab por espaços quando o arquivo for um makefile
     autocmd BufEnter Makefile setlocal noexpandtab 
 augroup END
@@ -136,9 +136,6 @@ augroup END
 filetype plugin on
 syntax on
 colorscheme vimdark
-
-let g:pascal_delphi=1
-let g:pascal_fpc=1
 
 " Altera definições de cor
 " highlight Pmenu      cterm=none  ctermbg=gray       ctermfg=black
