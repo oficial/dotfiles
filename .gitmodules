@@ -1,6 +1,0 @@
-[submodule "vim/bundle/ctrlp.vim"]
-	path = vim/bundle/ctrlp.vim
-	url = https://github.com/tomtom/tcomment_vim.git
-[submodule "vim/pack/tml/start/tcomment_vim"]
-	path = vim/pack/tml/start/tcomment_vim
-	url = https://github.com/tomtom/tcomment_vim.git
