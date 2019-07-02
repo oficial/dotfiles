@@ -1,6 +1,3 @@
-" Plugins:
-" - tcomment: Simula o CTRL+/ para comentario de linhas     (https://github.com/tomtom/tcomment_vim)
-" - CtrlP: Simula o CTRL+P do sublime para buscas rapidas   (https://github.com/ctrlpvim/ctrlp.vim)
 
 " Configuracoes diversas {{{
 
@@ -76,22 +73,36 @@ set statusline+=\                       "Espaço em branco
 "}}}
 
 " Configuração de plugins {{{
+"
+" Plugins:
+" - tcomment: Simula o CTRL+/ para comentario de linhas     (https://github.com/tomtom/tcomment_vim)
+" - CtrlP: Simula o CTRL+P do sublime para buscas rapidas   (https://github.com/ctrlpvim/ctrlp.vim)
+" - Fugitive: trabalhar com GIT
 
-" NetRW
+" Install and run vim-plug on first run
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Install the plugins on this list
+source ~/.vim/plugins.vim
+
+" NetRW config
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
-" CTRLP
-if isdirectory("~/.vim/bundle/ctrlp.vim")
-    set runtimepath^=~/.vim/bundle/ctrlp.vim
-    let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
-    let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-    let g:ctrlp_map = '<c-p>'
-    let g:ctrlp_cmd = 'CtrlP'
-endif
+" CtrlP config
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+" let g:ctrlp_user_command = 'find %s -type f'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 "}}}
 
@@ -118,7 +129,7 @@ inoremap {<CR> {<CR>}<ESC>O
 
 "F1: aciona o help para a palavra sob o cursor
 "F3: limpa o destaque nas palavras após uma busca
-noremap  <F1> :help <C-r><C-w><CR>
+" noremap  <F1> :help <C-r><C-w><CR> (Funcionalidade já existe: "K")
 noremap  <F3> :set hlsearch! hlsearch?<CR> 
 noremap  <F5> :source ~/.vim/vimrc<CR>
 noremap  <F4> :bd<CR>
@@ -138,7 +149,6 @@ augroup END
 
 augroup configgroup
     autocmd!
-    " autocmd VimEnter * highlight clear
     "Desativa a troca de tab por espaços quando o arquivo for um makefile
     autocmd BufEnter Makefile setlocal noexpandtab 
 augroup END
@@ -153,14 +163,7 @@ syntax on
 colorscheme vimdark
 
 " Altera definições de cor
-" highlight Pmenu      cterm=none  ctermbg=gray       ctermfg=black
-" highlight PmenuSel   cterm=none  ctermbg=darkgray   ctermfg=white
-" highlight VertSplit  cterm=none  ctermbg=black      ctermfg=White
-" highlight Search     cterm=none  ctermbg=darkyellow ctermfg=black
-" highlight MatchParen cterm=none  ctermbg=none       ctermfg=red
-" highlight SpellBad   cterm=none  ctermbg=darkgray   ctermfg=darkred
 highlight EndOfBuffer ctermbg=black ctermfg=black guibg=black guifg=black
 highlight SpellBad    ctermbg=black ctermfg=darkred
-
 
 "}}}
