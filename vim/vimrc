@@ -75,23 +75,37 @@ set statusline+=\ %l:%c                 "Linha e coluna
 set statusline+=\                       "Espaço em branco
 "}}}
 
-" Configuração do navegador de arquivos NetRW {{{
+" Configuração de plugins {{{
+
+" NetRW
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+
+" CTRLP
+if isdirectory("~/.vim/bundle/ctrlp.vim")
+    set runtimepath^=~/.vim/bundle/ctrlp.vim
+    let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
+    let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+    let g:ctrlp_map = '<c-p>'
+    let g:ctrlp_cmd = 'CtrlP'
+endif
+
 "}}}
 
 " Mapeamentos de tecla {{{
 
 "Mapeamentos do modo normal: Redimensionar splits
-" nmap <C-Left> <C-w><
-" nmap <C-Right> <C-w>>
+nmap <C-S-Left> <C-w><
+nmap <C-S-Right> <C-w>>
 " nmap <C-Up> <C-W>+<C-W>+
 " nmap <C-Down> <C-W>-<C-W>-
 nmap <space> viw
 nmap - dd
+nmap " ciw"<ESC>p
+nmap ' ciw'<ESC>p
 
 "Mapeamentos do modo de inserção
 inoremap <c-w> <ESC>:w<CR>
@@ -111,6 +125,7 @@ noremap  <F4> :bd<CR>
 noremap  <S-F4> :bd!<CR>
 nnoremap <C-Left> <ESC>:bp<CR>
 nnoremap <C-Right> <ESC>:bn<CR>
+
 "}}}
 
 " Comandos {{{
