@@ -31,3 +31,6 @@ shopt -s histappend
 
 PROMPT_COMMAND="history -a; history -n";
 
+
+. ~/.config/dotfiles/bash/bash_aliases
+
