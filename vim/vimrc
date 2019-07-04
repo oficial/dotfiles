@@ -70,6 +70,10 @@ set statusline+=\ \[%{&fileformat}\]    "Espaço em branco e o formato do arquiv
 set statusline+=\ %p%%                  "Percentagem do arquivo
 set statusline+=\ %l:%c                 "Linha e coluna
 set statusline+=\                       "Espaço em branco
+
+" sign define atention text=ᐅᐅ linehl=Warning texthl=Error
+" ✓ ֍ ᐅ ‣  ⃟ ⇒ ⎊ ⏵⏵ ▷ ☛ ⚑ ⚐ ⚠
+
 "}}}
 
 " Configuração de plugins {{{
@@ -77,7 +81,8 @@ set statusline+=\                       "Espaço em branco
 " Plugins:
 " - tcomment: Simula o CTRL+/ para comentario de linhas     (https://github.com/tomtom/tcomment_vim)
 " - CtrlP: Simula o CTRL+P do sublime para buscas rapidas   (https://github.com/ctrlpvim/ctrlp.vim)
-" - Fugitive: trabalhar com GIT
+" - Fugitive: trabalhar com GIT                             (https://github.com/tpope/vim-fugitive)
+" - VIM-Signature: Permite adicionar e manipular marcas     (https://github.com/kshenoy/vim-signature)
 
 " Install and run vim-plug on first run
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -116,7 +121,7 @@ nmap <C-S-Right> <C-w>>
 nmap <space> viw
 nmap - dd
 nmap " ciw"<ESC>p
-nmap ' ciw'<ESC>p
+" nmap ' ciw'<ESC>p
 
 "Mapeamentos do modo de inserção
 inoremap <c-w> <ESC>:w<CR>
