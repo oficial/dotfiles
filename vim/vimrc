@@ -62,6 +62,7 @@ set statusline= "Limpa qualquer definição anterior
 set statusline+=%#LineNr#               "Seta a cor do grupo 'LineNr'
 set statusline+=%f                      "Path do arquivo no buffer atual
 set statusline+=\ %m                    "Flag indicando se o arquivo foi modificado '[+]'
+set statusline+=\ [%{FugitiveHead()}\]  "Indica o branch do arquivo atual
 set statusline+=%=                      "Marca o fim dos itens alinhados a esquerda e inicio dos alinhados a direita
 set statusline+=%#Special#              "Seta a cor do grupo 'Special'
 set statusline+=\ %y                    "Espaço em branco e o tipo do arquivo
