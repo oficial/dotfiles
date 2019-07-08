@@ -115,6 +115,7 @@ let g:ctrlp_cmd = 'CtrlP'
 " Mapeamentos de tecla {{{
 
 "Mapeamentos do modo normal: Redimensionar splits
+map <C-_> :TComment<CR>
 nmap <C-S-Left> <C-w><
 nmap <C-S-Right> <C-w>>
 " nmap <C-Up> <C-W>+<C-W>+
@@ -136,10 +137,15 @@ inoremap {<CR> {<CR>}<ESC>O
 "F1: aciona o help para a palavra sob o cursor
 "F3: limpa o destaque nas palavras após uma busca
 " noremap  <F1> :help <C-r><C-w><CR> (Funcionalidade já existe: "K")
-noremap  <F3> :set hlsearch! hlsearch?<CR> 
-noremap  <F5> :source ~/.vim/vimrc<CR>
-noremap  <F4> :bd<CR>
-noremap  <S-F4> :bd!<CR>
+nnoremap  <F3> :set hlsearch! hlsearch?<CR>
+nnoremap  <F4> :bd<CR>
+nnoremap  <F5> :source ~/.vim/vimrc<CR>
+
+nnoremap  <F7> :cn<CR>
+nnoremap  <F8> :cp<CR>
+nnoremap  <F9> :Make<CR>
+
+nnoremap  <S-F4> :bd!<CR>
 nnoremap <C-Left> <ESC>:bp<CR>
 nnoremap <C-Right> <ESC>:bn<CR>
 
@@ -158,6 +164,7 @@ augroup configgroup
     "Desativa a troca de tab por espaços quando o arquivo for um makefile
     autocmd BufEnter Makefile setlocal noexpandtab 
 augroup END
+
 
 "}}}
 
