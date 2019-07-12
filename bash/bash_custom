@@ -2,7 +2,10 @@ GREEN="\[$(tput setaf 2)\]"
 RESET="\[$(tput sgr0)\]"
 PS1="${GREEN}\w${RESET}> "
 
-PATH=/home/ricardo/bin/vim/bin:/home/ricardo/dev/depot_tools:$PATH
+HISTSIZE=5000
+HISTFILESIZE=10000
+
+PATH=/home/ricardo/bin/vim/bin:$PATH
 
 export PATH PS1
 
@@ -34,3 +37,6 @@ PROMPT_COMMAND="history -a; history -n";
 
 . ~/.config/dotfiles/bash/bash_aliases
 
+if [ -f ~/.bash_local ]; then
+    .  ~/.bash_local
+fi
