@@ -19,8 +19,7 @@ mkdir -p ~/bin/vim
     --prefix=/home/ricardo/bin/vim \
     --localstatedir=/var/lib/vim \
     --enable-multibyte \
-    --enable-pythoninterp=yes \
-    --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
+    --enable-pythoninterp=no \
     --enable-cscope \
     --enable-terminal=yes \
     --enable-signs \

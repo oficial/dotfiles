@@ -1,4 +1,3 @@
-
 " Configuracoes diversas {{{
 
 set t_Co=256        "Informa suporte a 256 cores
@@ -32,11 +31,12 @@ set noswapfile      "Do not create a swapfile
 set dictionary=/usr/share/dict/words,/usr/share/dict/brazilian
 set complete+=k
 set ttyfast
-set laststatus=2    "Always show the statusline
-set scrolloff=2     "Mostra pelo menos 2 linhas acima e abaixo do cursor
+set laststatus=2    " Always show the statusline
+set scrolloff=2     " Mostra pelo menos 2 linhas acima e abaixo do cursor
 set sidescroll=1    " min. number of columns to scroll horizontally.
 set sidescrolloff=2 " min. number of columns to keep to the left/right of the cursor
-set wildmenu
+set path+=**        " Search down into subfolders. Provides tab-completion for all file-related tasks
+set wildmenu        " Display all matching files when we tab complete
 set wildmode=full
 set wildignore+=*.so,*~,*/.git/*
 set foldmethod=marker
@@ -47,7 +47,7 @@ set noerrorbells
 set novisualbell
 set nomodeline
 set t_vb=
-set spell spelllang=en,pt
+" set spell spelllang=en,pt
 " set cursorline
 set confirm
 set history=2000
@@ -75,17 +75,16 @@ set statusline+=\                       "Espaço em branco
 
 " sign define atention text=ᐅᐅ linehl=Warning texthl=Error
 " ✓ ֍ ᐅ ‣  ⃟ ⇒ ⎊ ⏵⏵ ▷ ☛ ⚑ ⚐ ⚠
-syntax keyword pyConstant None conceal cchar=∅
+" syntax keyword pyConstant None conceal cchar=∅
 
 "}}}
 
 " Configuração de plugins {{{
-"
-" Plugins:
-" - tcomment: Simula o CTRL+/ para comentario de linhas     (https://github.com/tomtom/tcomment_vim)
-" - CtrlP: Simula o CTRL+P do sublime para buscas rapidas   (https://github.com/ctrlpvim/ctrlp.vim)
-" - Fugitive: trabalhar com GIT                             (https://github.com/tpope/vim-fugitive)
-" - VIM-Signature: Permite adicionar e manipular marcas     (https://github.com/kshenoy/vim-signature)
+
+" Set ripgrep as the grep tool
+" if executable('rg')
+"     let &grepprg = "rg --vimgrep"
+" endif
 
 " Install and run vim-plug on first run
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -110,7 +109,7 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " let g:ctrlp_user_command = 'find %s -type f'
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP ~'
+let g:ctrlp_cmd = 'CtrlP'
 
 "}}}
 
@@ -128,7 +127,7 @@ nmap " ciw"<ESC>p
 nmap ' `
 
 "Mapeamentos do modo de inserção
-inoremap <c-w> <ESC>:w<CR>
+" inoremap <c-w> <ESC>:w<CR>
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ( ()<left>
@@ -136,9 +135,7 @@ inoremap [ []<left>
 inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 
-"F1: aciona o help para a palavra sob o cursor
 "F3: limpa o destaque nas palavras após uma busca
-" noremap  <F1> :help <C-r><C-w><CR> (Funcionalidade já existe: "K")
 nnoremap  <F3> :set hlsearch! hlsearch?<CR>
 nnoremap  <F4> :bd<CR>
 nnoremap  <F5> :source ~/.vim/vimrc<CR>
@@ -150,6 +147,8 @@ nnoremap  <F9> :Make<CR>
 nnoremap  <S-F4> :bd!<CR>
 nnoremap <C-Left> <ESC>:bp<CR>
 nnoremap <C-Right> <ESC>:bn<CR>
+nnoremap <C-p> :Files <cr>
+nnoremap <C-g> :Rg <cr>
 
 "}}}
 

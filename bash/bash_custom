@@ -1,14 +1,21 @@
+# Prompt style
 GREEN="\[$(tput setaf 2)\]"
 RESET="\[$(tput sgr0)\]"
-PS1="${GREEN}\w${RESET}> "
+export PS1="${GREEN}\w${RESET}> "
 
-HISTSIZE=5000
-HISTFILESIZE=10000
+# History configuration
+HISTSIZE=500000
+HISTFILESIZE=100000
+HISTCONTROL="erasedups"
+# Use standard ISO 8601 timestamp
+# %F equivalent to %Y-%m-%d
+# %T equivalent to %H:%M:%S (24-hours format)
+HISTTIMEFORMAT='%F %T '
 
-PATH=/home/ricardo/bin/vim/bin:$PATH
+# Some custom PATH entries
+export PATH=/home/ricardo/bin:/home/ricardo/bin/vim/bin:$PATH
 
-export PATH PS1
-
+# Configure bash tab-completion
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
 
@@ -19,8 +26,7 @@ bind '"\e[B": history-search-forward'
 bind '"\e[C": forward-char'
 bind '"\e[D": backward-char'
 
-
-# Prepend cd to directory names automatically
+# Prepend "cd " to directory names automatically
 shopt -s autocd 2> /dev/null
 
 # Correct spelling errors during tab-completion
@@ -32,11 +38,44 @@ shopt -s cdspell 2> /dev/null
 # Append to the history file
 shopt -s histappend
 
+# Allow folder recursion using  **
+shopt -s globstar 2> /dev/null
+
+# Consider multiline command as a single entry in history
+shopt -s cmdhist
+
 PROMPT_COMMAND="history -a; history -n";
 
+# Use VIM as manual paginator
+export MANPAGER="vim -c 'set ft=man' -"
 
+# FZF config
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+if [ -f /usr/share/fzf/completion.bash ]; then
+  source /usr/share/fzf/completion.bash
+fi
+if [ -f /usr/share/fzf/key-bindings.bash ]; then
+  source /usr/share/fzf/key-bindings.bash
+fi
+
+# Put some colors on manpages
+man() {
+    env LESS_TERMCAP_mb=$'\E[01;31m' \
+    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    LESS_TERMCAP_so=$'\E[38;5;246m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
+    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+    man "$@"
+}
+
+# Alias definitions
 . ~/.config/dotfiles/bash/bash_aliases
 
+# Machine specific  configs (not tracked in Git)
 if [ -f ~/.bash_local ]; then
     .  ~/.bash_local
 fi
+
+

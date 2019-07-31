@@ -4,12 +4,15 @@ alias ctlu='systemctl --user'
 alias sctl='sudo systemctl'
 alias pstop="ps -A --sort -rsz -o comm,pmem,pcpu | awk 'NR<=20'"
 alias meuip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias pastebin="curl -F c=@- https://ptpb.pw/"
+alias clip="curl -F 'sprunge=<-' http://sprunge.us"
+
 alias doc="sudo docker"
-#alias nuget="mono /home/ricardo/dev/NugetCredentialProviderBundle/NuGet.exe"
+
+alias pac="pacman"
+alias spac="sudo pacman"
 
 alias gc='git commit'
 alias gd='git diff'
-alias gl5='git log -n 5'
+alias gl='git log -n 5'
 alias gs='git status'
 
