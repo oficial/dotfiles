@@ -15,6 +15,8 @@ HISTTIMEFORMAT='%F %T '
 # Some custom PATH entries
 export PATH=/home/ricardo/bin:/home/ricardo/bin/vim/bin:$PATH
 
+export EDITOR=vim
+
 # Configure bash tab-completion
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
@@ -46,8 +48,8 @@ shopt -s cmdhist
 
 PROMPT_COMMAND="history -a; history -n";
 
-# Use VIM as manual paginator
-export MANPAGER="vim -c 'set ft=man' -"
+# Use LESS as manual paginator
+export MANPAGER="less -S"
 
 # FZF config
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
