@@ -1,0 +1,57 @@
+\set QUIET 1
+
+-----------------------------------------------------------------------
+-- If an error occur executing a command, during a interactive session,
+-- dont abort the transaction you are in. This give you a chance to fix
+-- the command and dont have to start the transaction from the begining.
+\set ON_ERROR_ROLLBACK interactive
+
+-----------------------------------------------------------------------
+-- Configure the pager to use when presenting content that will scroll
+-- the screen
+\setenv PAGER 'less -S --chop-long-lines'
+
+-----------------------------------------------------------------------
+-- By default, NULL displays as an empty space. Is it actually an empty
+-- string, or is it null? This makes that distinction visible.
+--\pset null '[null]'
+\pset null '¤'
+
+-----------------------------------------------------------------------
+----------- Configure the prompts (RTFM for details) ------------------
+\set PROMPT1 '%x%[%033[1m%][%/] # '
+-- SELECT * FROM<enter>. %R shows what type of input it expects.
+\set PROMPT2 '... > '
+
+-----------------------------------------------------------------------
+------- Configure apearence when presenting query results -------------
+\pset linestyle unicode
+\pset border 2
+\pset format wrapped
+
+-- Show execution time of every command
+\timing
+
+-- Let PSQL format the output table
+\x auto
+
+\set VERBOSITY verbose
+
+-----------------------------------------------------------------------
+----------------- Configure history -----------------------------------
+-- Set a history file per database
+\set HISTFILE ~/.psql_history- :DBNAME
+-- Ignore duplicate commands
+\set HISTCONTROL ignoredups
+-- Auto-complete will preserve the case you start typing, but prefer
+-- uppercase if you have type nothing
+\set COMP_KEYWORD_CASE preserve-upper
+
+-----------------------------------------------------------------------
+---------------- Alias definitions  (usage ":name") -------------------
+-- List all tables (usage ":tabelas")
+\set tabelas 'select * from pg_tables;'
+-- Show database activity
+\set atividade 'select datname, usename, application_name, state, query from pg_stat_activity where datname is not null;'
+
+\unset QUIET
