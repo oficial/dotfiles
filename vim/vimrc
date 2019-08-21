@@ -138,8 +138,9 @@ nnoremap <silent> <F10> :TlistToggle<CR>
 nnoremap <S-F4> :bd!<CR>
 nnoremap <C-Left> <ESC>:bp<CR>
 nnoremap <C-Right> <ESC>:bn<CR>
-nnoremap <C-p> :Files <cr>
-nnoremap <C-g> :Rg <cr>
+nnoremap <C-p> :Files <CR>
+nnoremap <C-g> :Rg <CR>
+nnoremap <C-b> :Buffers <CR>
 
 " shortcuts for 3-way merge
 map <Leader>1 :diffget LOCAL<CR>
