@@ -59,7 +59,8 @@ set matchtime=1     " Tenths of a second to show the matching paren
 set list
 set fillchars=stl:\=,stlnc:\-,vert:\|,fold:-,diff:-
 " set listchars=tab:»·,nbsp:+,trail:.,extends:→,precedes:←,space:\ ,eol:<
-set listchars=tab:»·,trail:.,extends:→,precedes:←,space:\ ,nbsp:+
+" set listchars=tab:»·,trail:.,extends:→,precedes:←,space:\ ,nbsp:+
+set listchars=tab:\|\ ,trail:.,extends:→,precedes:←,space:\ ,nbsp:+
 set statusline= "Limpa qualquer definição anterior
 set statusline+=%#LineNr#               "Seta a cor do grupo 'LineNr'
 set statusline+=%f                      "Path do arquivo no buffer atual
@@ -129,6 +130,7 @@ inoremap {<CR> {<CR>}<ESC>O
 nnoremap <silent> <F3> :set hlsearch! hlsearch?<CR>
 nnoremap <silent> <F4> :bd<CR>
 nnoremap <F5> :source ~/.vim/vimrc<CR>
+nnoremap <F6> :edit ~/.vim/vimrc<CR>
 
 nnoremap <silent> <F7> :cn<CR>
 nnoremap <silent> <F8> :cp<CR>
@@ -161,7 +163,7 @@ augroup configgroup
     autocmd!
     "Desativa a troca de tab por espaços quando o arquivo for um makefile
     autocmd BufEnter Makefile setlocal noexpandtab
-    autocmd BufWritePost *.c exe ":Dispatch! ctags -R ."
+    " autocmd BufWritePost *.c exe ":Dispatch! ctags -R ."
 augroup END
 
 "}}}
@@ -182,7 +184,7 @@ highlight MatchWord   ctermbg=black ctermfg=white
 highlight MyTagListFileName ctermfg=darkred ctermbg=black
 highlight MyTagListTitle    ctermfg=white   ctermbg=black
 highlight MyTagListTagName  ctermfg=blue    ctermbg=black
-" highlight MyTagListComment  ctermfg= 		ctermbg=black
-" highlight MyTagListTagScope ctermfg=darkred	ctermbg=black
+" highlight MyTagListComment  ctermfg=      ctermbg=black
+" highlight MyTagListTagScope ctermfg=darkred ctermbg=black
 
 "}}}

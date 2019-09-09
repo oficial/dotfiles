@@ -72,6 +72,9 @@ man() {
     man "$@"
 }
 
+# Ordem de includes: .bashrc => bash_custom => bash_local
+#                                          \=> bash_aliases
+
 # Alias definitions
 . ~/.config/dotfiles/bash/bash_aliases
 
@@ -79,5 +82,4 @@ man() {
 if [ -f ~/.bash_local ]; then
     .  ~/.bash_local
 fi
-
 

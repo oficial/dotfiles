@@ -16,7 +16,7 @@ mkdir -p ~/bin/vim
     --with-mac-arch=intel \
     --with-x=no \
     --with-local-dir=/home/ricardo/bin/vim \
-    --prefix=/home/ricardo/bin/vim \
+    --prefix=$HOME/bin/vim \
     --localstatedir=/var/lib/vim \
     --enable-multibyte \
     --enable-pythoninterp=no \
@@ -31,7 +31,7 @@ mkdir -p ~/bin/vim
     --disable-farsi \
     --disable-rightleft \
     --disable-gtktest \
-    --with-compiledby='Ricardo'
+    --with-compiledby=$USER
 
 make
 
