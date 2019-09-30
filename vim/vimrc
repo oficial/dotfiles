@@ -50,6 +50,7 @@ set nomodeline
 set t_vb=
 " set spell spelllang=en,pt
 " set cursorline
+set conceallevel=1
 set confirm
 set history=2000
 set timeoutlen=500
@@ -58,9 +59,11 @@ set matchpairs+=<:> " Add HTML brackets to pair matching
 set matchtime=1     " Tenths of a second to show the matching paren
 set list
 set fillchars=stl:\=,stlnc:\-,vert:\|,fold:-,diff:-
+
 " set listchars=tab:»·,nbsp:+,trail:.,extends:→,precedes:←,space:\ ,eol:<
 " set listchars=tab:»·,trail:.,extends:→,precedes:←,space:\ ,nbsp:+
 set listchars=tab:\|\ ,trail:.,extends:→,precedes:←,space:\ ,nbsp:+
+
 set statusline= "Limpa qualquer definição anterior
 set statusline+=%#LineNr#               "Seta a cor do grupo 'LineNr'
 set statusline+=%f                      "Path do arquivo no buffer atual
@@ -75,9 +78,6 @@ set statusline+=\ %p%%                  "Percentagem do arquivo
 set statusline+=\ %l:%c                 "Linha e coluna
 set statusline+=\                       "Espaço em branco
 
-" sign define atention text=ᐅᐅ linehl=Warning texthl=Error
-" ✓ ֍ ᐅ ‣  ⃟ ⇒ ⎊ ⏵⏵ ▷ ☛ ⚑ ⚐ ⚠
-" syntax keyword pyConstant None conceal cchar=∅
 
 "}}}
 
@@ -93,14 +93,12 @@ endif
 " Install the plugins on this list
 source ~/.vim/plugins.vim
 
-" TagList config
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Show_One_File = 1
-let Tlist_Use_Right_Window = 1
-let Tlist_Use_SingleClick = 1
-let Tlist_Compact_Format = 1
-let Tlist_Enable_Fold_Column = 0
-let Tlist_WinWidth = 33
+" Rust
+let g:rustfmt_autosave = 1
+let g:cargo_makeprg_params = 'build --release'
+
+" VimWiki
+let g:vimwiki_list = [{'path': '~/Dropbox/Wiki/'}]
 
 "}}}
 
@@ -118,7 +116,6 @@ nmap " ciw"<ESC>p
 nmap ' `
 
 "Mapeamentos do modo de inserção
-" inoremap <c-w> <ESC>:w<CR>
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ( ()<left>
@@ -130,12 +127,12 @@ inoremap {<CR> {<CR>}<ESC>O
 nnoremap <silent> <F3> :set hlsearch! hlsearch?<CR>
 nnoremap <silent> <F4> :bd<CR>
 nnoremap <F5> :source ~/.vim/vimrc<CR>
-nnoremap <F6> :edit ~/.vim/vimrc<CR>
+nnoremap <silent> <F6> :edit ~/.vim/vimrc<CR>
 
 nnoremap <silent> <F7> :cn<CR>
 nnoremap <silent> <F8> :cp<CR>
 nnoremap <silent> <F9> :Make<CR>
-nnoremap <silent> <F10> :TlistToggle<CR>
+nnoremap <silent> <F10> :TagbarToggle<CR>
 
 nnoremap <S-F4> :bd!<CR>
 nnoremap <C-Left> <ESC>:bp<CR>
@@ -180,11 +177,7 @@ highlight EndOfBuffer ctermbg=black ctermfg=black guibg=black guifg=black
 highlight SpellBad    ctermbg=black ctermfg=darkred
 highlight SpellCap    ctermbg=black ctermfg=yellow
 highlight MatchWord   ctermbg=black ctermfg=white
-
-highlight MyTagListFileName ctermfg=darkred ctermbg=black
-highlight MyTagListTitle    ctermfg=white   ctermbg=black
-highlight MyTagListTagName  ctermfg=blue    ctermbg=black
-" highlight MyTagListComment  ctermfg=      ctermbg=black
-" highlight MyTagListTagScope ctermfg=darkred ctermbg=black
+highlight Conceal     ctermfg=green ctermbg=black
+highlight VimwikiMarkers ctermbg=black ctermfg=darkred
 
 "}}}
