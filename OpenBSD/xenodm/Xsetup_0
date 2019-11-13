@@ -1,0 +1,49 @@
+#!/bin/sh
+# $OpenBSD: Xsetup_0,v 1.6 2019/06/29 13:33:06 espie Exp $
+
+# xconsole -geometry 480x130-0-0 -daemon -notify -verbose -fn fixed -exitOnFail
+xrandr --output default --dpi 96
+
+xsetroot -solid black
+
+OS_NAME=$(uname -n)
+OS_INFO=$(uname -smr)
+
+xclock -digital -geometry -0+0 -strftime "$OS_NAME ($OS_INFO) | %a. %d %b. %Y  %H:%M " -fg white -bg black &
+
+#  install package openbsd-backgrounds
+#  then uncomment:
+#
+# if test -x /usr/local/bin/openbsd-wallpaper
+# then
+# 	/usr/local/bin/openbsd-wallpaper
+# fi
+
+# sxpm OpenBSD.xpm &
+
+
+
+
+
+# show the Sleep / Restart / Shutdown bar
+# in case of sleep, pop xmessage again after waking up
+(
+while true; do
+  xmessage -geometry +800-32 \
+    -buttons "[ Sleep ]":20,"[ Restart ]":21,"[ Shutdown ]":22 ""
+  ACTION=$?
+  echo "Xmessage said: $ACTION"
+  if   [ $ACTION -eq 20 ]; then /usr/sbin/zzz;
+  elif [ $ACTION -eq 21 ]; then
+    xsetroot -cursor_name watch
+    /sbin/shutdown -r now
+  elif [ $ACTION -eq 22 ]; then
+    xsetroot -cursor_name watch
+    /sbin/shutdown -p now
+  else echo "Something bad happened to Xmessage.";
+  fi
+  # stop looping if xclock died (hopefully killed by GiveConsole)
+  if [ -z "$(pgrep -U root xclock)" ]; then break; fi
+done
+) &
+

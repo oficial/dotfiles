@@ -1,0 +1,31 @@
+xlogin.Login.echoPasswd:       true
+xlogin.Login.fail:             fail
+xlogin.Login.greeting:
+xlogin.Login.namePrompt:       \040\040\040Login\040
+xlogin.Login.passwdPrompt:     Passwd\040
+
+xlogin.Login.height:           180
+xlogin.Login.width:            500
+xlogin.Login.y:                320
+xlogin.Login.frameWidth:       0
+xlogin.Login.innerFramesWidth: 0
+
+xlogin.Login.background:       black
+xlogin.Login.foreground:       #eeeeee
+xlogin.Login.failColor:        white
+xlogin.Login.inpColor:         black
+xlogin.Login.promptColor:      #eeeeec
+
+xlogin.Login.face:             spleen-18
+xlogin.Login.failFace:         spleen-18
+xlogin.Login.promptFace:       spleen-18
+
+xmessage*background: black
+xmessage*foreground: white
+xmessage*borderWidth: 1
+xmessage*font: spleen-24
+xmessage*message.scrollHorizontal: Never
+xmessage*message.scrollVertical: Never
+xmessage*timeout: 0
+
+
