@@ -78,7 +78,7 @@ bind-key MS-l window-resize-right
 bind-key 4-d menu-cmd
 
 # Colors
-color activeborder 	red
+color activeborder 	white
 color inactiveborder	dimgray
 color menubg 		black 		# Set menu background color
 color menufg 		darkslategrey	# Set menu foreground color
