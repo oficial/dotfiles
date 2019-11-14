@@ -12,8 +12,6 @@ moveamount 30
 
 # border
 borderwidth 1
-color activeborder dimgray
-color inactiveborder dimgray
 
 # edge gap
 gap 5 5 5 5
@@ -79,19 +77,22 @@ bind-key MS-l window-resize-right
 # mod + d = menu
 bind-key 4-d menu-cmd
 
+# Colors
+color activeborder 	red
+color inactiveborder	dimgray
+color menubg 		black 		# Set menu background color
+color menufg 		darkslategrey	# Set menu foreground color
+
 # menu font
 fontname "monospace:pixelsize=16"
 
 # menu commands
+command terminal xterm
+command htop "xterm -e htop"
 command calculator xcalc
 command firefox firefox
 command gimp gimp
-command htop "xterm -e htop"
-command inkscape inkscape
-command keepassxc keepassxc
-command libreoffice libreoffice
+
 command poweroff "doas shutdown -p -h now"
 command reboot "doas reboot"
-command thunderbird thunderbird
-command terminal xterm
-command transmission transmission-gtk
+
