@@ -1,4 +1,6 @@
+
 #xbacklight -set 50 &
+
 # xsetroot -solid darkslategrey &
 xsetroot -solid black &
 setxkbmap br &
@@ -8,6 +10,4 @@ numlockx &
 xterm -geometry 260x68+10+10 -e tmux &
 
 exec cwm
-# exec startxfce4
-
 
