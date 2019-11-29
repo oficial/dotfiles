@@ -2,7 +2,7 @@
 unbind-mouse all
 
 # reset default key bindings
-unbind-key all
+#unbind-key all
 
 # automatically add new windows to the current group
 sticky yes
@@ -62,6 +62,8 @@ bind-key 4S-m thunderbird
 bind-key 4S-p keepassxc
 bind-key 4S-w firefox
 
+bind-key M-F1 "rofi -show combi"
+
 # alt + h,j,k,l = move window left, down, up, right
 bind-key M-h window-move-left
 bind-key M-j window-move-down
@@ -78,21 +80,23 @@ bind-key MS-l window-resize-right
 bind-key 4-d menu-cmd
 
 # Colors
-color activeborder 	white
-color inactiveborder	dimgray
-color menubg 		black 		# Set menu background color
-color menufg 		darkslategrey	# Set menu foreground color
+color activeborder   white
+color inactiveborder dimgray
+color menubg         black   # Set menu background color
+color menufg         dimgray # Set menu foreground color
+color font           white
+color selfont        white
 
 # menu font
-fontname "monospace:pixelsize=16"
+fontname "monospace:pixelsize=12"
 
 # menu commands
 command terminal xterm
-command htop "xterm -e htop"
-command calculator xcalc
-command firefox firefox
-command gimp gimp
-
+command top "xterm -e top"
+command calculator "xcalc"
+command firefox "firefox"
 command poweroff "doas shutdown -p -h now"
 command reboot "doas reboot"
+
+ignore "xload"
 
