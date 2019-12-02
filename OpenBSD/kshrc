@@ -1,6 +1,11 @@
 HISTFILE="$HOME/.ksh_history"
 HISTSIZE=10000
 
+
+GREEN="\[$(tput setaf 2)\]"
+RESET="\[$(tput sgr0)\]"
+PS1="${GREEN}\w${RESET}> "
+
 set -o emacs
 alias __A=`echo "\020"`     # up arrow = ^p = back a command
 alias __B=`echo "\016"`     # down arrow = ^n = down a command
