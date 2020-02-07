@@ -1,0 +1,13 @@
+
+#xbacklight -set 50 &
+
+# xsetroot -solid darkslategrey &
+xsetroot -solid black &
+setxkbmap br &
+numlockx &
+
+#xload -geometry +1-20  -update 1 -nolabel -jumpscroll 1 -bg darkslategrey -bw 0 -bd darkslategrey &
+xterm -geometry 260x68+10+10 -e tmux &
+
+exec cwm
+

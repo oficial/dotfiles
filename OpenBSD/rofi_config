@@ -1,0 +1,10 @@
+rofi.theme:          /usr/local/share/rofi/themes/lb.rasi
+rofi.combi-modi:     window,drun,run,ssh
+rofi.modi:           combi
+rofi.case-sensitive: false
+rofi.cycle:          true
+rofi.sidebar-mode:   false
+rofi.display-drun:   App
+rofi.display-window: Window
+
+
