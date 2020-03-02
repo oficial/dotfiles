@@ -1,3 +1,5 @@
+#!/bin/sh
+
 alias lss='ls -lhSF --color=always --group-directories-first --time-style=+"[%d/%m/%Y %T]"'
 alias ctl='systemctl'
 alias ctlu='systemctl --user'
@@ -13,7 +15,7 @@ alias spac="sudo pacman"
 
 alias gc='git commit'
 alias gd='git diff'
-alias gl='git log -20 --oneline'
+alias gl="git log --color --oneline | fzf --multi --reverse --preview 'git show --color {+1}'"
 alias gll='git log -10'
 alias gs='git status --untracked-files=no'
 alias gss='git status'
