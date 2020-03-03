@@ -4,6 +4,7 @@ HISTSIZE=10000
 HISTCONTROL="ignoredups"
 
 # ANSI color codes
+# Ref: bluesock.org/~willkg/dev/ansi.html
 Black="\e[0;30m"
 Blue="\e[0;34m"
 Green="\e[0;32m"

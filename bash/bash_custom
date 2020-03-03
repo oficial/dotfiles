@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Prompt style
 GREEN="\[$(tput setaf 2)\]"
 RESET="\[$(tput sgr0)\]"
@@ -52,7 +54,8 @@ PROMPT_COMMAND="history -a; history -n";
 export MANPAGER="less -S"
 
 # FZF config
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --color=always --glob "!.git/*"'
+export FZF_DEFAULT_OPTS="--ansi --preview '~/.vim/plugged/fzf.vim/bin/preview.sh {}'"
 if [ -f /usr/share/fzf/completion.bash ]; then
   source /usr/share/fzf/completion.bash
 fi

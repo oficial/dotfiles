@@ -1,8 +1,11 @@
 " Configuracoes diversas {{{
 
 set t_Co=256        "Informa suporte a 256 cores
-set encoding=utf8
+set encoding=utf-8
+set fileencoding=utf-8
 set ruler           "Mostra linha:coluna
+set signcolumn=yes
+"set colorcolumn=80  "Marca a linha 80
 set mouse=a         "Ativa o suporte ao mouse (para selecionar texto p.e.)
 set hidden          "Permite mudar de buffer sem salvar as alterações realizadas
 set nocompatible    "Desabilita compatibilidade com VI
@@ -14,6 +17,7 @@ set breakindent     "Ao quebrar a linha, manter a identação
 set expandtab	    "Troca tabs por espaços
 set tabstop=4	    "Quantidade de espaços do tab
 set shiftwidth=4    "Quantidade de espaços do tab
+set cindent         "Identação padrão C
 set softtabstop=4   "Faz o backspace tratar 4 espaços como tab
 set backspace=indent,eol,start
 set ignorecase	    "Buscas case insensitive
@@ -21,17 +25,19 @@ set incsearch	    "Destaca resultado da busca enquanto digita
 set hlsearch        "Destaca todas as ocorrencias da busca
 set showmatch	    "Mostra o casamento de {}, [] e ()
 set nobackup	    "Desabilita o uso de arquivos de backup
+set autoread        "Recarrega arquivo se alterado extenamente
 set nostartofline   "Permanece na mesma coluna ao mudar de linha
 set warn            "Warning when a shell cmd is used while the buffer has been changed.
 set shortmess+=I    "Start without the intro message
 set shortmess+=s    "Suppress 'search hit BOTTOM, continuing at TOP' message
 set shortmess+=tT   "Truncate long filenames/messages
-set shortmess+=a    "Truncate long filenames/messages
+set shortmess+=a    "No 'Hit ENTER to continue'
 set nowritebackup   "Do not create backupfile
 set noswapfile      "Do not create a swapfile
 set dictionary=/usr/share/dict/words,/usr/share/dict/brazilian
 set complete+=k
 set ttyfast
+set clipboard=unnamed " yank to clipboard
 set laststatus=2    " Always show the statusline
 set scrolloff=2     " Mostra pelo menos 2 linhas acima e abaixo do cursor
 set sidescroll=1    " min. number of columns to scroll horizontally.
@@ -42,8 +48,8 @@ set wildmode=full
 set wildignore+=*.so,*~,*/.git/*
 set foldmethod=syntax
 set nofoldenable
-set splitbelow
 set splitright
+set splitbelow
 set noerrorbells
 set novisualbell
 set nomodeline
@@ -62,7 +68,8 @@ set fillchars=stl:\=,stlnc:\-,vert:\|,fold:-,diff:-
 
 " set listchars=tab:»·,nbsp:+,trail:.,extends:→,precedes:←,space:\ ,eol:<
 " set listchars=tab:»·,trail:.,extends:→,precedes:←,space:\ ,nbsp:+
-set listchars=tab:\|\ ,trail:.,extends:→,precedes:←,space:\ ,nbsp:+
+" set listchars=tab:▸\ ,trail:.,extends:→,precedes:←,space:\ ,nbsp:+
+set listchars=tab:▸\ ,trail:·,precedes:…,extends:…,nbsp:‗
 
 set statusline= "Limpa qualquer definição anterior
 set statusline+=%#LineNr#               "Seta a cor do grupo 'LineNr'
@@ -95,10 +102,27 @@ source ~/.vim/plugins.vim
 
 " Rust
 let g:rustfmt_autosave = 1
-let g:cargo_makeprg_params = 'build --release'
+let g:cargo_makeprg_params = 'build --release --message-format short'
 
 " VimWiki
 let g:vimwiki_list = [{'path': '~/Dropbox/Wiki/'}]
+
+" VIM Move
+" let g:move_key_modifier = 'S'
+
+" FZF.vim
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+" Border color
+"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo' } }
+" Border style
+"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:false } }
+
+" ALE
+" Enable ESLint only for JavaScript.
+let b:ale_linters = {'javascript': ['eslint']}
+let b:ale_fixers =  {'javascript': ['eslint']}
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
 
 "}}}
 
@@ -124,11 +148,11 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 
 "F3: limpa o destaque nas palavras após uma busca
+nnoremap <silent> <F2> :set invlist<CR>
 nnoremap <silent> <F3> :set hlsearch! hlsearch?<CR>
 nnoremap <silent> <F4> :bd<CR>
-nnoremap <F5> :source ~/.vim/vimrc<CR>
+nnoremap <silent> <F5> :source ~/.vim/vimrc<CR>
 nnoremap <silent> <F6> :edit ~/.vim/vimrc<CR>
-
 nnoremap <silent> <F7> :cn<CR>
 nnoremap <silent> <F8> :cp<CR>
 nnoremap <silent> <F9> :Make<CR>
@@ -176,7 +200,7 @@ colorscheme vimdark
 highlight EndOfBuffer ctermbg=black ctermfg=black guibg=black guifg=black
 highlight SpellBad    ctermbg=black ctermfg=darkred
 highlight SpellCap    ctermbg=black ctermfg=yellow
-highlight MatchWord   ctermbg=black ctermfg=white
+highlight MatchWord   ctermbg=black ctermfg=cyan
 highlight Conceal     ctermfg=green ctermbg=black
 highlight VimwikiMarkers ctermbg=black ctermfg=darkred
 
