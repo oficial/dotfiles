@@ -1,10 +1,27 @@
+# History config
 HISTFILE="$HOME/.ksh_history"
 HISTSIZE=10000
+HISTCONTROL="ignoredups"
 
+# ANSI color codes
+Black="\e[0;30m"
+Blue="\e[0;34m"
+Green="\e[0;32m"
+Cyan="\e[0;36m"
+Red="\e[0;31m"
+Purple="\e[0;35m"
+Brown="\e[0;33m"
+Gray="\e[0;37m"
+Dark_Gray="\e[1;30m"
+Light_Blue="\e[1;34m"
+Light_Green="\e[1;32m"
+Light_Cyan="\e[1;36m"
+Light_Red="\e[1;31m"
+Light_Purple="\e[1;35m"
+Yellow="\e[1;33m"
+White="\e[1;37m"
 
-GREEN="\[$(tput setaf 2)\]"
-RESET="\[$(tput sgr0)\]"
-PS1="${GREEN}\w${RESET}> "
+PS1="${Light_Red}\w${Gray}> "
 
 set -o emacs
 alias __A=`echo "\020"`     # up arrow = ^p = back a command
@@ -14,3 +31,4 @@ alias __D=`echo "\002"`     # left arrow = ^b = back a character
 alias __H=`echo "\001"`     # home = ^a = start of line
 alias __Y=`echo "\005"`     # end = ^e = end of line
 
+fortune theo
