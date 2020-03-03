@@ -108,10 +108,21 @@ let g:cargo_makeprg_params = 'build --release --message-format short'
 let g:vimwiki_list = [{'path': '~/Dropbox/Wiki/'}]
 
 " VIM Move
-let g:move_key_modifier = 'S'
+" let g:move_key_modifier = 'S'
 
 " FZF.vim
-"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+" Border color
+"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo' } }
+" Border style
+"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:false } }
+
+" ALE
+" Enable ESLint only for JavaScript.
+let b:ale_linters = {'javascript': ['eslint']}
+let b:ale_fixers =  {'javascript': ['eslint']}
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
 
 "}}}
 
@@ -189,7 +200,7 @@ colorscheme vimdark
 highlight EndOfBuffer ctermbg=black ctermfg=black guibg=black guifg=black
 highlight SpellBad    ctermbg=black ctermfg=darkred
 highlight SpellCap    ctermbg=black ctermfg=yellow
-highlight MatchWord   ctermbg=black ctermfg=white
+highlight MatchWord   ctermbg=black ctermfg=cyan
 highlight Conceal     ctermfg=green ctermbg=black
 highlight VimwikiMarkers ctermbg=black ctermfg=darkred
 
