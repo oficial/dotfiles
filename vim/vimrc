@@ -37,7 +37,7 @@ set noswapfile      "Do not create a swapfile
 set dictionary=/usr/share/dict/words,/usr/share/dict/brazilian
 set complete+=k
 set ttyfast
-set clipboard=unnamed " yank to clipboard
+set clipboard=unnamedplus "Copy to the X Window clipboard
 set laststatus=2    " Always show the statusline
 set scrolloff=2     " Mostra pelo menos 2 linhas acima e abaixo do cursor
 set sidescroll=1    " min. number of columns to scroll horizontally.
@@ -60,6 +60,7 @@ set conceallevel=1
 set confirm
 set history=2000
 set timeoutlen=500
+set updatetime=300
 set showmatch       " Jump to matching bracket
 set matchpairs+=<:> " Add HTML brackets to pair matching
 set matchtime=1     " Tenths of a second to show the matching paren
@@ -111,7 +112,7 @@ let g:vimwiki_list = [{'path': '~/Dropbox/Wiki/'}]
 " let g:move_key_modifier = 'S'
 
 " FZF.vim
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " Border color
 "let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo' } }
 " Border style
@@ -119,10 +120,10 @@ let g:vimwiki_list = [{'path': '~/Dropbox/Wiki/'}]
 
 " ALE
 " Enable ESLint only for JavaScript.
-let b:ale_linters = {'javascript': ['eslint']}
-let b:ale_fixers =  {'javascript': ['eslint']}
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
+" let b:ale_linters = {'javascript': ['eslint']}
+" let b:ale_fixers =  {'javascript': ['eslint']}
+" let g:ale_sign_error = '✘'
+" let g:ale_sign_warning = '⚠'
 
 "}}}
 

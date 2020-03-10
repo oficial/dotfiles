@@ -14,7 +14,7 @@ mkdir -p ~/bin/vim
 ./configure \
     --with-features=${1:-normal} \
     --with-mac-arch=intel \
-    --with-x=no \
+    --with-x=yes \
     --with-local-dir=/home/ricardo/bin/vim \
     --prefix=$HOME/bin/vim \
     --localstatedir=/var/lib/vim \
