@@ -1,0 +1,2 @@
+/dev/sd0a on / type ffs (local, noatime, softdep)
+/dev/sd0b on /usr/local type ffs (local, noatime, nodev, wxallowed, softdep)
