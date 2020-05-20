@@ -105,12 +105,6 @@ source ~/.vim/plugins.vim
 let g:rustfmt_autosave = 1
 let g:cargo_makeprg_params = 'build --release --message-format short'
 
-" VimWiki
-let g:vimwiki_list = [{'path': '~/Dropbox/Wiki/'}]
-
-" VIM Move
-" let g:move_key_modifier = 'S'
-
 " FZF.vim
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " Border color
@@ -124,6 +118,10 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " let b:ale_fixers =  {'javascript': ['eslint']}
 " let g:ale_sign_error = '✘'
 " let g:ale_sign_warning = '⚠'
+
+let g:markdown_fenced_languages = ['python','javascript']
+
+" let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 
 "}}}
 
@@ -157,7 +155,8 @@ nnoremap <silent> <F6> :edit ~/.vim/vimrc<CR>
 nnoremap <silent> <F7> :cn<CR>
 nnoremap <silent> <F8> :cp<CR>
 nnoremap <silent> <F9> :Make<CR>
-nnoremap <silent> <F10> :TagbarToggle<CR>
+" nnoremap <silent> <F10> :TagbarToggle<CR>
+nnoremap <silent> <F10> :Vista!!<CR>
 
 nnoremap <S-F4> :bd!<CR>
 nnoremap <C-Left> <ESC>:bp<CR>
