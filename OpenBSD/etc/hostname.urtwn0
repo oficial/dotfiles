@@ -1,0 +1,6 @@
+join SALUTIS-VISITANTES wpakey XXXX
+join SALUTIS-TECNOLOGIA wpakey XXXX
+join "WiFi-Repeater" wpakey XXXX
+join "Ricardo W" wpakey XXXX
+dhcp
+
