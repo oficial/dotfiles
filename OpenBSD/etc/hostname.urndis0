@@ -1,0 +1,5 @@
+join SALUTIS-VISITANTES wpakey XXXXX
+join SALUTIS-TECNOLOGIA wpakey XXXXX
+join "Ricardo W" wpakey XXXXX
+dhcp
+

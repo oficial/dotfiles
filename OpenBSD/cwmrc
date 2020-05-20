@@ -14,7 +14,7 @@ moveamount 30
 borderwidth 1
 
 # edge gap
-gap 5 5 5 5
+gap 20 5 5 5
 
 # mod + $N = show only windows for group $N
 bind-key 4-1 group-only-1
