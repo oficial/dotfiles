@@ -1,14 +1,23 @@
+xbacklight -set 50 &
 
-#xbacklight -set 50 &
+# xsetroot -solid black &
+xsetroot -mod 8 8 -bg darkslategrey &
 
-# xsetroot -solid darkslategrey &
-oxbar ricardo &
-xsetroot -solid black &
 setxkbmap br &
-numlockx &
 
-#xload -geometry +1-20  -update 1 -nolabel -jumpscroll 1 -bg darkslategrey -bw 0 -bd darkslategrey &
-xterm -geometry 160x40+10+20 -e tmux &
+xset +fp /usr/local/share/fonts/ghostscript
+xset +fp /usr/local/share/fonts/adobe-source-code-pro
+xset +fp /usr/local/share/fonts/adobe-source-sans-pro
+xset +fp /usr/local/share/fonts/adobe-source-serif-pro
+xset +fp /usr/local/share/fonts/font-awesome
+xset +fp /usr/local/share/fonts/roboto
+
+xset s off
+xset -dpms
+
+#xcompmgr -c -C -t-5 -l-5 -r8 -o.70 &
+
+xterm -g 150x35+10+20 -e "tmux -u -2 new -A" &
 
 exec cwm
 

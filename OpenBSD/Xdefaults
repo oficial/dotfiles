@@ -1,42 +1,117 @@
 ! $OpenBSD: dot.Xdefaults,v 1.3 2014/07/10 10:22:59 jasper Exp $
-XTerm*loginShell:true
-XTerm*facename: monospace:pixelsize=8:antialias=true
-XTerm*ScrollBar: off
-XConsole*ScrollBar: off
+XTerm*loginShell:       true
+XTerm*utf8:             1
+XTerm*faceName:         Liberation Mono:pixelsize=10:antialias=true
+XTerm*eightBitInput:    false
+XTerm*metaSendsEscape:  true
+XTerm*ScrollBar:        false
+XTerm*charClass:        33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+! make alt key work normally
+XTerm*vt100.metaSendsEscape: true
+! don't include a trailing newline in the line selection!
+XTerm*cutNewline:       false
+*VT100*translations: #override \n\
+    Ctrl Shift   <Key>C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift   <Key>V: insert-selection(CLIPBOARD) \n\
+         Shift <Btn1Up>: exec-formatted("dillo '%t'", PRIMARY)
 
+
+! *text.scrollVertical: Never
+*scrollVertical: Never
+
+!##############
+!#   Colors   #
+!##############
 ! special
-*.foreground:   #c5c8c6
-*.background:   #1d1f21
-*.cursorColor:  #c5c8c6
-
+*.foreground:   #b7b8b9
+*.background:   #0c0d0e
+*.cursorColor:  #b7b8b9
 ! black
-*.color0:       #1d1f21
-*.color8:       #969896
-
+*.color0:       #0c0d0e
+*.color8:       #737475
 ! red
-*.color1:       #cc342b
-*.color9:       #cc342b
-
+*.color1:       #e31a1c
+*.color9:       #e31a1c
 ! green
-*.color2:       #198844
-*.color10:      #198844
-
+*.color2:       #31a354
+*.color10:      #31a354
 ! yellow
-*.color3:       #fba922
-*.color11:      #fba922
-
+*.color3:       #dca060
+*.color11:      #dca060
 ! blue
-*.color4:       #3971ed
-*.color12:      #3971ed
-
+*.color4:       #3182bd
+*.color12:      #3182bd
 ! magenta
-*.color5:       #a36ac7
-*.color13:      #a36ac7
-
+*.color5:       #756bb1
+*.color13:      #756bb1
 ! cyan
-*.color6:       #3971ed
-*.color14:      #3971ed
-
+*.color6:       #80b1d3
+*.color14:      #80b1d3
 ! white
-*.color7:       #c5c8c6
-*.color15:      #ffffff
+*.color7:       #b7b8b9
+*.color15:      #fcfdfe
+
+!##############
+!#    XPDF    #
+!##############
+!xpdf.initialZoom: 200
+!xpdf.paperColor: black
+xpdf.matteColor: #1d1f21
+xpdf.toolTipEnable: false
+xpdf*Foreground: white
+xpdf*Background: #1d1f21
+
+!##############
+!#   Fonts    #
+!##############
+Xft.autohint  : 0
+Xft.lcdfilter : lcddefault
+Xft.hintstyle : hintslight
+Xft.hinting   : 1
+Xft.antialias : 1
+Xft.rgba      : rgb
+
+!################
+!#     XIdle    #
+!################
+! drag pointer to lower left corner to lock screen
+XIdle*position : sw
+! and leave it there for one second.
+XIdle*delay    : 1
+! also lock screen after 5 minutes idle
+XIdle*timeout  : 300
+
+!################
+!#    XLock     #
+!################
+! actually turn the backlight off
+XLock.dpmsoff     : 1
+! plain white-on-black lock screen
+XLock.description : off
+XLock.echokeys    : off
+XLock.info        :
+XLock.background  : black
+XLock.foreground  : white
+XLock.mode        : blank
+XLock.username    : username: 
+XLock.password    : password: 
+XLock.font        : -misc-fixed-medium-r-normal-*-15-*-*-*-*-*-iso10646-1
+XLock.planfont    : -misc-fixed-medium-r-normal-*-13-*-*-*-*-*-iso10646-1
+XLock*faceName    : Liberation Mono:pixelsize=10:antialias=true
+
+!################
+!#     XClock   #
+!################
+! digital clock in lower right-hand corner
+XClock*analog      : false
+XClock*twentyfour  : true
+XClock*padding     : 2
+XClock*update      : 5
+XClock*geometry    : -0+0
+XClock*render      : false
+XClock*height      : 17
+XClock*background  : DarkSlateGray
+XClock*foreground  : grey
+XClock*borderWidth : 0
+XClock*faceName    : Liberation Mono:pixelsize=10:antialias=true
+

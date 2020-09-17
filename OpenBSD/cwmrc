@@ -14,7 +14,7 @@ moveamount 30
 borderwidth 1
 
 # edge gap
-gap 20 5 5 5
+gap 5 5 5 5
 
 # mod + $N = show only windows for group $N
 bind-key 4-1 group-only-1
@@ -48,7 +48,7 @@ bind-key 4-v window-vtile
 bind-key 4-h window-htile
 
 # ctrl + q = kill window
-# bind-key C-q window-delete
+# bind-key C-q window-delete # Conflict with rtorrent exit keybinding
 
 # mod + shift + x = lock screen
 bind-key 4S-x lock
@@ -57,12 +57,10 @@ bind-key 4S-x lock
 bind-key CM-r restart
 
 # apps keybindings
-bind-key 4-Return terminal
-bind-key 4S-m thunderbird
-bind-key 4S-p keepassxc
-bind-key 4S-w firefox
-
-bind-key M-F1 "rofi -show combi"
+# bind-key 4-Return "st ksh -l"
+bind-key 4-Return "xterm"
+bind-key CM-i "/home/ricardo/bin/internet_check"
+bind-key CM-b "/home/ricardo/bin/battery_check"
 
 # alt + h,j,k,l = move window left, down, up, right
 bind-key M-h window-move-left
@@ -88,15 +86,18 @@ color font           white
 color selfont        white
 
 # menu font
-fontname "monospace:pixelsize=12"
+#fontname "monospace:pixelsize=12"
+fontname "Liberation Mono:pixelsize=12"
 
 # menu commands
+# command terminal "st ksh -l"
 command terminal xterm
+# command top "st -e top"
 command top "xterm -e top"
 command calculator "xcalc"
-command firefox "firefox"
-command poweroff "doas shutdown -p -h now"
+command poweroff "doas halt -p"
 command reboot "doas reboot"
 
-ignore "xload"
+#ignore "xload"
+ignore "xclock"
 
