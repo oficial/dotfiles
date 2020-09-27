@@ -12,7 +12,7 @@ rm -rf ~/bin/vim
 mkdir -p ~/bin/vim
 
 ./configure \
-    --with-features=${1:-normal} \
+    --with-features=${1:-huge} \
     --with-mac-arch=intel \
     --with-x=yes \
     --with-local-dir=/home/ricardo/bin/vim \

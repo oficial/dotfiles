@@ -37,5 +37,10 @@ alias news="newsboat"
 stty stop undef
 stty start undef
 
+# Make DEL remove char forward.
+# Also need to set XTerm*deleteIsDEL to false on Xdefaults
+bind -m '^X3'=^X
+bind '^X~'=delete-char-forward
+
 fortune theo
 

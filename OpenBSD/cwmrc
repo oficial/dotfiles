@@ -60,7 +60,8 @@ bind-key CM-r restart
 # bind-key 4-Return "st ksh -l"
 bind-key 4-Return "xterm"
 bind-key CM-i "/home/ricardo/bin/internet_check"
-bind-key CM-b "/home/ricardo/bin/battery_check"
+bind-key CM-b "/home/ricardo/bin/battery_check --allways"
+bind-key CM-f "/usr/local/bin/xfe"
 
 # alt + h,j,k,l = move window left, down, up, right
 bind-key M-h window-move-left
