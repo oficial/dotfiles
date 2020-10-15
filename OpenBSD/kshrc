@@ -32,4 +32,15 @@ alias __D=`echo "\002"`     # left arrow = ^b = back a character
 alias __H=`echo "\001"`     # home = ^a = start of line
 alias __Y=`echo "\005"`     # end = ^e = end of line
 
+alias news="newsboat"
+
+stty stop undef
+stty start undef
+
+# Make DEL remove char forward.
+# Also need to set XTerm*deleteIsDEL to false on Xdefaults
+bind -m '^X3'=^X
+bind '^X~'=delete-char-forward
+
 fortune theo
+
