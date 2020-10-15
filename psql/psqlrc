@@ -52,6 +52,6 @@
 -- List all tables (usage ":tabelas")
 \set tabelas 'select * from pg_tables;'
 -- Show database activity
-\set atividade 'select datname, usename, application_name, state, query from pg_stat_activity where datname is not null;'
+\set atividade 'select datname, usename, application_name, state, query from pg_stat_activity where datname is not null and state = "active";'
 
 \unset QUIET

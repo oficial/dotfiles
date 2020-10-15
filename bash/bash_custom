@@ -3,7 +3,7 @@
 # Prompt style
 GREEN="\[$(tput setaf 2)\]"
 RESET="\[$(tput sgr0)\]"
-export PS1="${GREEN}\w${RESET}> "
+export PS1="[\t] ${GREEN}\w${RESET}> "
 
 # History configuration
 HISTSIZE=500000
@@ -16,8 +16,8 @@ HISTTIMEFORMAT='%F %T '
 
 # Some custom PATH entries
 export PATH=/home/ricardo/bin:/home/ricardo/bin/vim/bin:$PATH
-
 export EDITOR=vim
+export PAGER=less
 
 # Configure bash tab-completion
 bind "set completion-ignore-case on"
@@ -81,7 +81,7 @@ man() {
 # Alias definitions
 . ~/.config/dotfiles/bash/bash_aliases
 
-# Machine specific  configs (not tracked in Git)
+# Machine specific configs (not tracked in Git)
 if [ -f ~/.bash_local ]; then
     .  ~/.bash_local
 fi

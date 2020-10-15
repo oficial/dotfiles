@@ -1,14 +1,13 @@
 #!/bin/sh
 
 alias lss='ls -lhSF --color=always --group-directories-first --time-style=+"[%d/%m/%Y %T]"'
+alias ll="(printf 'Permissões Links Dono Grupo Bytes Mês Dia '; printf 'Hora/Ano Arquivo\n'; ls -lhSF --color=always --group-directories-first | sed 1d) | column -t"
 alias ctl='systemctl'
 alias ctlu='systemctl --user'
 alias sctl='sudo systemctl'
 alias pstop="ps -A --sort -rsz -o comm,pmem,pcpu | awk 'NR<=20'"
 alias meuip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias clip="curl -F 'sprunge=<-' http://sprunge.us"
-
-alias doc="sudo docker"
 
 alias pac="pacman"
 alias spac="sudo pacman"

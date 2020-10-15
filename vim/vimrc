@@ -5,20 +5,19 @@ set encoding=utf-8
 set fileencoding=utf-8
 set ruler           "Mostra linha:coluna
 set signcolumn=yes
-"set colorcolumn=80  "Marca a linha 80
 set mouse=a         "Ativa o suporte ao mouse (para selecionar texto p.e.)
 set hidden          "Permite mudar de buffer sem salvar as alterações realizadas
 set nocompatible    "Desabilita compatibilidade com VI
 set number          "Mostra numero da linha
-set relativenumber  "Mostra numero da linha de forma hibrida (relativa mas mostrando a atual)
+" set relativenumber  "Mostra numero da linha de forma hibrida (relativa mas mostrando a atual)
 set nowrap          "Desabilita quebra de linha
 set wrapscan        "Search wrap at the end of the file
 set breakindent     "Ao quebrar a linha, manter a identação
 set expandtab	    "Troca tabs por espaços
-set tabstop=4	    "Quantidade de espaços do tab
-set shiftwidth=4    "Quantidade de espaços do tab
+set tabstop=2	    "Quantidade de espaços do tab
+set shiftwidth=2    "Quantidade de espaços do tab
 set cindent         "Identação padrão C
-set softtabstop=4   "Faz o backspace tratar 4 espaços como tab
+set softtabstop=2   "Faz o backspace tratar 2 espaços como tab
 set backspace=indent,eol,start
 set ignorecase	    "Buscas case insensitive
 set incsearch	    "Destaca resultado da busca enquanto digita
@@ -106,22 +105,15 @@ let g:rustfmt_autosave = 1
 let g:cargo_makeprg_params = 'build --release --message-format short'
 
 " FZF.vim
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-" Border color
-"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo' } }
-" Border style
-"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:false } }
-
-" ALE
-" Enable ESLint only for JavaScript.
-" let b:ale_linters = {'javascript': ['eslint']}
-" let b:ale_fixers =  {'javascript': ['eslint']}
-" let g:ale_sign_error = '✘'
-" let g:ale_sign_warning = '⚠'
+" Size and border color
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8, 'highlight': 'Todo' } }
+" let g:fzf_preview_window = 'right:50%'
+" Border style (sharp corner)
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:false } }
 
 let g:markdown_fenced_languages = ['python','javascript']
-
-" let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+" let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 
 "}}}
 
@@ -131,8 +123,8 @@ let g:markdown_fenced_languages = ['python','javascript']
 map <C-_> :TComment<CR>
 nmap <C-S-Left> <C-w><
 nmap <C-S-Right> <C-w>>
-" nmap <C-Up> <C-W>+<C-W>+
-" nmap <C-Down> <C-W>-<C-W>-
+nmap <C-S-Up> <C-W>+<C-W>+
+nmap <C-S-Down> <C-W>-<C-W>-
 nmap <space> viw
 nmap - dd
 nmap " ciw"<ESC>p
@@ -155,7 +147,6 @@ nnoremap <silent> <F6> :edit ~/.vim/vimrc<CR>
 nnoremap <silent> <F7> :cn<CR>
 nnoremap <silent> <F8> :cp<CR>
 nnoremap <silent> <F9> :Make<CR>
-" nnoremap <silent> <F10> :TagbarToggle<CR>
 nnoremap <silent> <F10> :Vista!!<CR>
 
 nnoremap <S-F4> :bd!<CR>
@@ -164,6 +155,22 @@ nnoremap <C-Right> <ESC>:bn<CR>
 nnoremap <C-p> :Files <CR>
 nnoremap <C-g> :Rg <CR>
 nnoremap <C-b> :Buffers <CR>
+" nnoremap <C-j> :call CocAction('diagnosticNext')<CR>
+" nnoremap <C-k> :call CocAction('diagnosticPrevious')<CR>
+
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nmap <leader>ac <Plug>(coc-codeaction)
+nmap <leader>f <Plug>(coc-fix-current)
 
 " shortcuts for 3-way merge
 map <Leader>1 :diffget LOCAL<CR>
@@ -185,6 +192,7 @@ augroup configgroup
     "Desativa a troca de tab por espaços quando o arquivo for um makefile
     autocmd BufEnter Makefile setlocal noexpandtab
     " autocmd BufWritePost *.c exe ":Dispatch! ctags -R ."
+    " autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 augroup END
 
 "}}}
@@ -203,5 +211,6 @@ highlight SpellCap    ctermbg=black ctermfg=yellow
 highlight MatchWord   ctermbg=black ctermfg=cyan
 highlight Conceal     ctermfg=green ctermbg=black
 highlight VimwikiMarkers ctermbg=black ctermfg=darkred
+highlight yamlKey    ctermbg=black ctermfg=white
 
 "}}}
