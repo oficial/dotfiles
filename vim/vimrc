@@ -1,8 +1,10 @@
-" Configuracoes diversas {{{
+" Configurações diversas {{{
 
 set t_Co=256        "Informa suporte a 256 cores
 set encoding=utf-8
 set fileencoding=utf-8
+set spell spelllang=en,pt
+set spellcapcheck=[.?!]\_[\])'" \t]\+
 set ruler           "Mostra linha:coluna
 set signcolumn=yes
 set mouse=a         "Ativa o suporte ao mouse (para selecionar texto p.e.)
@@ -13,47 +15,46 @@ set number          "Mostra numero da linha
 set nowrap          "Desabilita quebra de linha
 set wrapscan        "Search wrap at the end of the file
 set breakindent     "Ao quebrar a linha, manter a identação
-set expandtab	    "Troca tabs por espaços
-set tabstop=2	    "Quantidade de espaços do tab
+set expandtab       "Troca tabs por espaços
+set tabstop=2       "Quantidade de espaços do tab
 set shiftwidth=2    "Quantidade de espaços do tab
 set cindent         "Identação padrão C
 set softtabstop=2   "Faz o backspace tratar 2 espaços como tab
 set backspace=indent,eol,start
-set ignorecase	    "Buscas case insensitive
-set incsearch	    "Destaca resultado da busca enquanto digita
-set hlsearch        "Destaca todas as ocorrencias da busca
-set showmatch	    "Mostra o casamento de {}, [] e ()
-set nobackup	    "Desabilita o uso de arquivos de backup
-set autoread        "Recarrega arquivo se alterado extenamente
+set ignorecase      "Buscas case insensitive
+set incsearch       "Destaca resultado da busca enquanto digita
+set hlsearch        "Destaca todas as ocorrências da busca
+set showmatch       "Mostra o casamento de {}, [] e ()
+set nobackup        "Desabilita o uso de arquivos de backup
+set autoread        "Recarrega arquivo se alterado externamente
 set nostartofline   "Permanece na mesma coluna ao mudar de linha
 set warn            "Warning when a shell cmd is used while the buffer has been changed.
 set shortmess+=I    "Start without the intro message
 set shortmess+=s    "Suppress 'search hit BOTTOM, continuing at TOP' message
 set shortmess+=tT   "Truncate long filenames/messages
 set shortmess+=a    "No 'Hit ENTER to continue'
-set nowritebackup   "Do not create backupfile
-set noswapfile      "Do not create a swapfile
-set dictionary=/usr/share/dict/words,/usr/share/dict/brazilian
-set complete+=k
-set ttyfast
-set clipboard=unnamedplus "Copy to the X Window clipboard
-set laststatus=2    " Always show the statusline
+set nowritebackup   "Do not create backup file
+set noswapfile      "Do not create a swap file
+set laststatus=2    " Always show the status line
 set scrolloff=2     " Mostra pelo menos 2 linhas acima e abaixo do cursor
 set sidescroll=1    " min. number of columns to scroll horizontally.
 set sidescrolloff=2 " min. number of columns to keep to the left/right of the cursor
 set path+=**        " Search down into subfolders. Provides tab-completion for all file-related tasks
+set dictionary=/usr/share/dict/words,/usr/share/dict/brazilian
+set complete+=k
+set ttyfast
+set clipboard=unnamedplus "Copy to the X Window clipboard
 set wildmenu        " Display all matching files when we tab complete
 set wildmode=full
 set wildignore+=*.so,*~,*/.git/*
 set foldmethod=syntax
 set nofoldenable
 set splitright
-set splitbelow
+" set splitbelow
 set noerrorbells
 set novisualbell
 set nomodeline
 set t_vb=
-" set spell spelllang=en,pt
 " set cursorline
 set conceallevel=1
 set confirm
@@ -65,10 +66,6 @@ set matchpairs+=<:> " Add HTML brackets to pair matching
 set matchtime=1     " Tenths of a second to show the matching paren
 set list
 set fillchars=stl:\=,stlnc:\-,vert:\|,fold:-,diff:-
-
-" set listchars=tab:»·,nbsp:+,trail:.,extends:→,precedes:←,space:\ ,eol:<
-" set listchars=tab:»·,trail:.,extends:→,precedes:←,space:\ ,nbsp:+
-" set listchars=tab:▸\ ,trail:.,extends:→,precedes:←,space:\ ,nbsp:+
 set listchars=tab:▸\ ,trail:·,precedes:…,extends:…,nbsp:‗
 
 set statusline= "Limpa qualquer definição anterior
@@ -84,7 +81,6 @@ set statusline+=\ \[%{&fileformat}\]    "Espaço em branco e o formato do arquiv
 set statusline+=\ %p%%                  "Percentagem do arquivo
 set statusline+=\ %l:%c                 "Linha e coluna
 set statusline+=\                       "Espaço em branco
-
 
 "}}}
 
@@ -119,8 +115,8 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 
 " Mapeamentos de tecla {{{
 
-"Mapeamentos do modo normal: Redimensionar splits
-map <C-_> :TComment<CR>
+"Mapeamentos do modo normal
+nmap <C-_> :TComment<CR>
 nmap <C-S-Left> <C-w><
 nmap <C-S-Right> <C-w>>
 nmap <C-S-Up> <C-W>+<C-W>+
@@ -130,13 +126,8 @@ nmap - dd
 nmap " ciw"<ESC>p
 nmap ' `
 
-"Mapeamentos do modo de inserção
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
+nmap <leader>do <Plug>(coc-codeaction)
+nmap <leader>rn <Plug>(coc-rename)
 
 "F3: limpa o destaque nas palavras após uma busca
 nnoremap <silent> <F2> :set invlist<CR>
@@ -158,17 +149,15 @@ nnoremap <C-b> :Buffers <CR>
 " nnoremap <C-j> :call CocAction('diagnosticNext')<CR>
 " nnoremap <C-k> :call CocAction('diagnosticPrevious')<CR>
 
-
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent>[g <Plug>(coc-diagnostic-prev)
+nmap <silent>]g <Plug>(coc-diagnostic-next)
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
+nmap <silent>gd <Plug>(coc-definition)
+nmap <silent>gy <Plug>(coc-type-definition)
+nmap <silent>gi <Plug>(coc-implementation)
+nmap <silent>gr <Plug>(coc-references)
 nmap <leader>ac <Plug>(coc-codeaction)
 nmap <leader>f <Plug>(coc-fix-current)
 
@@ -177,9 +166,19 @@ map <Leader>1 :diffget LOCAL<CR>
 map <Leader>2 :diffget BASE<CR>
 map <Leader>3 :diffget REMOTE<CR>
 
+"Mapeamentos do modo de inserção
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+
 "}}}
 
 " Comandos {{{
+
+command! -nargs=0 Format :CocCommand prettier.formatFile
 
 "Uma pequena mensagem ao iniciar...
 augroup greeting
@@ -205,12 +204,11 @@ syntax on
 colorscheme vimdark
 
 " Altera definições de cor
-highlight EndOfBuffer ctermbg=black ctermfg=black guibg=black guifg=black
-highlight SpellBad    ctermbg=black ctermfg=darkred
-highlight SpellCap    ctermbg=black ctermfg=yellow
-highlight MatchWord   ctermbg=black ctermfg=cyan
-highlight Conceal     ctermfg=green ctermbg=black
 highlight VimwikiMarkers ctermbg=black ctermfg=darkred
-highlight yamlKey    ctermbg=black ctermfg=white
+highlight yamlKey    ctermbg=black ctermfg=244
+" highlight DiffAdd ctermbg=black ctermfg=green
+highlight SignifySignAdd ctermbg=black ctermfg=green
+highlight SignifySignDelete ctermbg=black ctermfg=red
+highlight SignifySignChange ctermbg=black ctermfg=yellow
 
 "}}}
