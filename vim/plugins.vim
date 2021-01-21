@@ -5,6 +5,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tomtom/tcomment_vim'
 Plug 'kshenoy/vim-signature'
+Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-dispatch'
 " Plug 'majutsushi/tagbar'
 Plug 'liuchengxu/vista.vim'
