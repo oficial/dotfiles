@@ -59,9 +59,12 @@ bind-key CM-r restart
 # apps keybindings
 # bind-key 4-Return "st ksh -l"
 bind-key 4-Return "xterm"
-bind-key CM-i "/home/ricardo/bin/internet_check"
-bind-key CM-b "/home/ricardo/bin/battery_check --allways"
-bind-key CM-f "/usr/local/bin/xfe"
+bind-key CM-i     "/home/ricardo/bin/internet_check"
+bind-key CM-b     "/home/ricardo/bin/battery_check --allways"
+# bind-key CM-f     "/usr/local/bin/xfe"
+bind-key CM-f     "xterm -geometry +250+150 -e 'nnn'"
+bind-key Print    "/home/ricardo/bin/take_screenshot"
+bind-key S-Print  "/home/ricardo/bin/take_screenshot -s"
 
 # alt + h,j,k,l = move window left, down, up, right
 bind-key M-h window-move-left
@@ -82,23 +85,25 @@ bind-key 4-d menu-cmd
 color activeborder   white
 color inactiveborder dimgray
 color menubg         black   # Set menu background color
-color menufg         dimgray # Set menu foreground color
-color font           white
+color menufg         black   # Set menu foreground color
+color font           dimgray
 color selfont        white
 
 # menu font
 #fontname "monospace:pixelsize=12"
-fontname "Liberation Mono:pixelsize=12"
+fontname "Liberation Mono:pixelsize=16"
 
 # menu commands
 # command terminal "st ksh -l"
-command terminal xterm
-# command top "st -e top"
-command top "xterm -e top"
+command terminal   "xterm"
+command browser    "netsurf-gtk3"
+command top        "xterm -e top"
 command calculator "xcalc"
-command poweroff "doas halt -p"
-command reboot "doas reboot"
+command julius     "julius /home/ricardo/games/Caesar3/Caesar3"
+command poweroff   "doas halt -p"
+command reboot     "doas reboot"
 
-#ignore "xload"
-ignore "xclock"
+# ignore "xload"
+# ignore "xclock"
+ignore "xconsole"
 

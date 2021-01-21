@@ -6,13 +6,17 @@ setxkbmap br &
 
 # Wallpaper pattern
 # xsetroot -solid black &
-xsetroot -mod 8 8 -bg darkslategrey &
+# xsetroot -mod 8 8 -bg darkslategrey &
+xsetroot -mod 8 8 -bg \#101010 &
 
-# Screensave off
+# Turn off blank screen
 (xset s off && xset -dpms) &
 
+# Lock screen in 5 min and show a screensaver
+# xidle -delay 5 -se -program "/usr/X11R6/bin/xlock -mode image" -timeout 300 &
+
 # Desktop effects
-#xcompmgr -c -C -t-5 -l-5 -r8 -o.70 &
+# xcompmgr -c -C -t-5 -l-5 -r8 -o.70 &
 
 # Notifications daemon
 rm -rf /tmp/xnotify.fifo

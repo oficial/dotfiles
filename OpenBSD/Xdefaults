@@ -1,4 +1,14 @@
 ! $OpenBSD: dot.Xdefaults,v 1.3 2014/07/10 10:22:59 jasper Exp $
+
+*.font: -*-lucida-medium-r-*-*-12-*-*-*-*-*-*-*
+
+!##############
+!#  Cursor
+!##############
+! package "xcursor-dmz"
+Xcursor.theme: dmz
+! Xcursor.size:  24
+
 !##############
 !#   XTerm    #
 !##############
@@ -18,8 +28,18 @@ XTerm*cutNewline:       false
 *VT100*translations: #override \n\
     Ctrl Shift   <Key>C: copy-selection(CLIPBOARD) \n\
     Ctrl Shift   <Key>V: insert-selection(CLIPBOARD) \n\
-         Shift <Btn1Up>: exec-formatted("dillo '%t'", PRIMARY)
+         Shift <Btn1Up>: exec-formatted("netsurf-gtk3 '%t'", PRIMARY)
 
+!################
+!#   SshAskpass #
+!################
+SshAskpass*inputTimeout: 5
+SshAskpass*Indicator.width: 15
+SshAskpass*Indicator.height: 5
+SshAskpass*Indicator.minimumCount: 8
+SshAskpass*Indicator.maximumCount: 8
+SshAskpass*shadowThickness: 2
+SshAskpass*font: -*-lucida-medium-r-*-*-16-*-*-*-*-*-*-*
 
 !##############
 !#   Colors   #
@@ -88,18 +108,16 @@ XIdle*timeout  : 300
 !################
 ! actually turn the backlight off
 XLock.dpmsoff     : 1
-! plain white-on-black lock screen
 XLock.description : off
 XLock.echokeys    : off
 XLock.info        :
 XLock.background  : black
-XLock.foreground  : white
+XLock.foreground  : darkred
 XLock.mode        : blank
 XLock.username    : username: 
 XLock.password    : password: 
-XLock.font        : -misc-fixed-medium-r-normal-*-15-*-*-*-*-*-iso10646-1
-XLock.planfont    : -misc-fixed-medium-r-normal-*-13-*-*-*-*-*-iso10646-1
 XLock*faceName    : Liberation Mono:pixelsize=10:antialias=true
+XLock.image.size  : 0
 
 !################
 !#     XClock   #

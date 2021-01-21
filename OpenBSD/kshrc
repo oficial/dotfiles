@@ -33,6 +33,7 @@ alias __H=`echo "\001"`     # home = ^a = start of line
 alias __Y=`echo "\005"`     # end = ^e = end of line
 
 alias news="newsboat"
+alias drcctl="doas rcctl"
 
 stty stop undef
 stty start undef
@@ -41,6 +42,12 @@ stty start undef
 # Also need to set XTerm*deleteIsDEL to false on Xdefaults
 bind -m '^X3'=^X
 bind '^X~'=delete-char-forward
+
+set -A complete_ifconfig_1 -- $(ifconfig | grep ^[a-z] | cut -d: -f1)
+set -A complete_sndioctl_1 -- $(sndioctl | cut -d= -f1)
+set -A complete_drcctl_1 -- get getdef set check reload restart stop start disable enable order ls
+set -A complete_drcctl_2 -- $(/bin/ls /etc/rc.d)
+set -A complete_git_1 -- log status diff add commit reset pull push
 
 fortune theo
 
