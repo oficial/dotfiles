@@ -11,7 +11,7 @@ TERM=xterm-256color
 LYNX_LSS=$HOME/.lynx.lss
 LSCOLORS=gxfxcxdxbxegedabagacad
 
-FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --hidden"
+# FZF_DEFAULT_COMMAND="rg --files --hidden -g '!{.cache/**,music/**,games/**,**/.git/**}'"
 GOPATH=$HOME/code/go
 
 export NNN_FALLBACK_OPENER=$PAGER
@@ -22,4 +22,4 @@ export PATH HOME TERM EDITOR PAGER LANG ENV FZF_DEFAULT_COMMAND GOPATH LYNX_LSS 
 
 alias ls='colorls -GF'
 alias lss='ls'
-
+alias hs='cat ~/.ksh_history | fzf'

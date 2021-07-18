@@ -1,5 +1,5 @@
 # mouse is for wimps!
-unbind-mouse all
+# unbind-mouse all
 
 # reset default key bindings
 #unbind-key all
@@ -38,31 +38,26 @@ bind-key 4S-7 window-movetogroup-7
 bind-key 4S-8 window-movetogroup-8
 bind-key 4S-9 window-movetogroup-9
 
-# mod + m = maximize current window
-bind-key 4-m window-maximize
+bind-key  4-m window-maximize    # mod + m = maximize current window
+bind-key  4-v window-vtile       # mod + v = tile vertically
+bind-key  4-h window-htile       # mod + h = tile horizontally
 
-# mod + v = tile vertically
-bind-key 4-v window-vtile
+# bind-key C-q window-delete     # ctrl + q = kill window (Conflict with rtorrent exit keybinding)
+bind-key C-x window-delete
 
-# mod + h = tile horizontally
-bind-key 4-h window-htile
-
-# ctrl + q = kill window
-# bind-key C-q window-delete # Conflict with rtorrent exit keybinding
-
-# mod + shift + x = lock screen
-bind-key 4S-x lock
-
-# ctrl + alt + r = restart cwm
 bind-key CM-r restart
+bind-key CM-q quit
+bind-key  M-x lock
+bind-key  M-r menu-exec
+bind-key  M-s menu-ssh
+bind-key  M-d menu-cmd
 
 # apps keybindings
 # bind-key 4-Return "st ksh -l"
 bind-key 4-Return "xterm"
 bind-key CM-i     "/home/ricardo/bin/internet_check"
 bind-key CM-b     "/home/ricardo/bin/battery_check --allways"
-# bind-key CM-f     "/usr/local/bin/xfe"
-bind-key CM-f     "xterm -geometry +250+150 -e 'nnn'"
+bind-key CM-f     "xterm -geometry +250+150 -e /home/ricardo/bin/file_manager.sh"
 bind-key Print    "/home/ricardo/bin/take_screenshot"
 bind-key S-Print  "/home/ricardo/bin/take_screenshot -s"
 
@@ -78,9 +73,6 @@ bind-key MS-j window-resize-down
 bind-key MS-k window-resize-up
 bind-key MS-l window-resize-right
 
-# mod + d = menu
-bind-key 4-d menu-cmd
-
 # Colors
 color activeborder   white
 color inactiveborder dimgray
@@ -95,13 +87,15 @@ fontname "Liberation Mono:pixelsize=16"
 
 # menu commands
 # command terminal "st ksh -l"
-command terminal   "xterm"
-command browser    "netsurf-gtk3"
-command top        "xterm -e top"
-command calculator "xcalc"
-command julius     "julius /home/ricardo/games/Caesar3/Caesar3"
-command poweroff   "doas halt -p"
-command reboot     "doas reboot"
+command Terminal   "xterm"
+command Browser    "netsurf-gtk3"
+command Processes  "xterm -geometry 90x40+250+30 -e top"
+command Files      "xterm -geometry +250+150 -e /home/ricardo/bin/file_manager.sh"
+command Files-GUI  "xfe"
+command Calculator "xcalc"
+command Julius     "julius /home/ricardo/games/Caesar3/Caesar3"
+command Poweroff   "doas halt -p"
+command Reboot     "doas reboot"
 
 # ignore "xload"
 # ignore "xclock"
