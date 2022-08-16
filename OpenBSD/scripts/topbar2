@@ -1,0 +1,37 @@
+#!/usr/local/bin/bash
+
+Battery() {
+	ADAPTER=$(apm -a)
+	if [ $ADAPTER = 0 ] ; then
+		echo -e -n "\uf242%{F#FF0000}%{B#000000}AC: %{F-}%{B-}"
+	elif [ $ADAPTER = 1 ] ; then
+		echo -e -n "\uf242%{F#00FF00}%{B#000000}AC: %{F-}%{B-}"
+	else
+		echo -e -n "\uf242%{F#0000FF}%{B#000000}AC: %{F-}%{B-}"
+	fi
+	BATTERY=$(apm -l)
+	if [ $BATTERY -gt 66 ] ; then
+		echo -n "%{F#00FF00}%{B#000000}$BATTERY% %{F-}%{B-}"
+	elif [ $BATTERY -gt 33 ] ; then
+		echo -n "%{F#FFFF00}%{B#000000}$BATTERY% %{F-}%{B-}"
+	else
+		echo -n "%{F#FF0000}%{B#000000}$BATTERY% %{F-}%{B-}"
+	fi
+	BATTERY=$(apm -m)
+	[[ "$BATTERY" != "unknown" ]] && echo -n " ($BATTERY m) "
+}
+
+Clock() {
+	DATETIME=$(date "+%d/%m - %H:%M")
+	echo -n "%{F#00FFFF}%{B#000000}$DATETIME%{F-}%{B-}"
+}
+
+Song(){
+    echo -n "$(mpc | head -n1)"
+}
+
+while true ; do
+    # echo "%{l}$(Cpu)| $(Load)| $(Battery)%{c}$(hostname -s)%{r}$(Display)| $(Volume)| $(Wlan)| $(Ifload)| $(Clock)" 
+    echo "%{l}$(Song) %{r}$(Battery) $(Clock)"
+	sleep 2
+done

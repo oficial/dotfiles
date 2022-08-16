@@ -1,0 +1,76 @@
+#!/usr/local/bin/bash
+export DISPLAY=:0
+
+# If charger is connected, do nothing
+CONNECTED=$(apm -a)
+BATTERY_LEVEL=$(apm -l)
+BATTERY_STATUS=$(apm -b)
+ICON_PATH=$HOME/.config/dotfiles/OpenBSD/scripts/bat-icons
+ICON=""
+
+MSG="Battery level $BATTERY_LEVEL%%"
+if [ $CONNECTED -eq 0 ]
+then
+  # MSG="$MSG (Disconnected)"
+  MSG="$MSG (Discharging)"
+elif [ $CONNECTED -eq 1 ]
+then
+  # MSG="$MSG (Connected)"
+  MSG="$MSG (Charging)"
+fi
+
+# High
+if [ $BATTERY_STATUS -eq 0 ]
+then
+    ICON="$ICON_PATH/battery-full.png"
+# Low
+elif [ $BATTERY_STATUS -eq 1 ]
+then
+    ICON="$ICON_PATH/battery-low.png"
+# Critical
+elif [ $BATTERY_STATUS -eq 2 ]
+then
+    ICON="$ICON_PATH/battery-caution.png"
+# Charging
+elif [ $BATTERY_STATUS -eq 3 ]
+then
+  if [ $BATTERY_LEVEL -le 25 ]
+  then
+    ICON="$ICON_PATH/battery-caution-charging.png"
+  elif [ $BATTERY_LEVEL -le 50 ]
+  then
+    ICON="$ICON_PATH/battery-low-charging.png"
+  elif [ $BATTERY_LEVEL -le 75 ]
+  then
+    ICON="$ICON_PATH/battery-good-charging.png"
+  else
+    ICON="$ICON_PATH/battery-full-charging.png"
+  fi
+# Absent
+elif [ $BATTERY_STATUS -eq 4 ]
+then
+    ICON="$ICON_PATH/battery-missing.png"
+# Unknown
+else
+  ICON="$ICON_PATH/battery-good.png"
+fi
+
+if [ ! -z "$ICON" ]
+then
+  MSG="IMG:$ICON\t$MSG\n"
+fi
+
+echo $MSG
+
+if [ $BATTERY_LEVEL -le 50 -o $# -eq 1 ]
+then
+  notify "$MSG"
+fi
+
+if [ $BATTERY_LEVEL -le 5 ]
+then
+  if [ $CONNECTED -eq 0 ]
+    doas halt -p
+  fi
+fi
+

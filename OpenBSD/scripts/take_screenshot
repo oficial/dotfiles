@@ -1,0 +1,14 @@
+#!/usr/local/bin/bash
+
+FILE="/tmp/screenshot-$(date +%s).png"
+
+if [ $# -eq 1 ]
+then
+  maim -s $FILE
+else
+  maim $FILE
+fi
+
+[ $? -eq 0 ] && notify "Screenshot capturado ($FILE)" || notify "Não deu!"
+
+

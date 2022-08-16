@@ -1,0 +1,21 @@
+#!/usr/local/bin/bash
+
+# export DISPLAY=:0
+
+TEXT=$@
+# SCREEN_WIDTH=1024
+# HEIGHT=26
+# WIDTH=${#TEXT}
+# WIDTH=$((WIDTH * 8))
+# # WIDTH=`echo $TEXT | wc -c`
+# # WIDTH=$(((WIDTH+4)*6))
+#
+# POSX=$((SCREEN_WIDTH - WIDTH - 10))
+# POSY=20
+#
+# GEOMETRY="${WIDTH}x${HEIGHT}+${POSX}+${POSY}"
+#
+# (echo -e $TEXT; sleep 5) | lemonbar-xft -g $GEOMETRY -B '#ee333333' -F '#ffffffff' -n lemonbar -f 'Font Awesome 5 Free Solid'
+
+printf "$TEXT" > /tmp/xnotify.fifo
+

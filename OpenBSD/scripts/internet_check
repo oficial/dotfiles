@@ -1,0 +1,16 @@
+#!/usr/local/bin/bash
+export DISPLAY=:0
+
+MSG="IMG:/usr/local/share/icons/wireless.png"
+
+ping -q -c 1 -w 5 google.com > /dev/null 2>&1
+
+if [ $? -eq 0 ]
+then
+    SSID=$(ifconfig | grep join | cut -d" " -f3)
+    MSG="$MSG\tOnline at $SSID"
+else
+    MSG="$MSG\tOffline!"
+fi
+
+notify $MSG

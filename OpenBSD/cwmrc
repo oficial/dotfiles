@@ -55,11 +55,11 @@ bind-key  M-d menu-cmd
 # apps keybindings
 # bind-key 4-Return "st ksh -l"
 bind-key 4-Return "xterm"
-bind-key CM-i     "/home/ricardo/bin/internet_check"
-bind-key CM-b     "/home/ricardo/bin/battery_check --allways"
-bind-key CM-f     "xterm -geometry +250+150 -e /home/ricardo/bin/file_manager.sh"
-bind-key Print    "/home/ricardo/bin/take_screenshot"
-bind-key S-Print  "/home/ricardo/bin/take_screenshot -s"
+bind-key CM-i     "/home/ricardo/.local/bin/scripts/internet_check"
+bind-key CM-b     "/home/ricardo/.local/bin/scripts/battery_check --allways"
+bind-key CM-f     "xterm -geometry +250+150 -e /home/ricardo/.local/bin/scripts/file_manager.sh"
+bind-key Print    "/home/ricardo/.local/bin/scripts/take_screenshot"
+bind-key S-Print  "/home/ricardo/.local/bin/scripts/take_screenshot -s"
 
 # alt + h,j,k,l = move window left, down, up, right
 bind-key M-h window-move-left
