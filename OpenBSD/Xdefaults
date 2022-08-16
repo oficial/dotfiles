@@ -1,5 +1,8 @@
 ! $OpenBSD: dot.Xdefaults,v 1.3 2014/07/10 10:22:59 jasper Exp $
 
+#define BG #d9d5ba
+#define FG #444444
+
 *.font: -*-lucida-medium-r-*-*-12-*-*-*-*-*-*-*
 
 !##############
@@ -47,31 +50,50 @@ SshAskpass*font: -*-lucida-medium-r-*-*-16-*-*-*-*-*-*-*
 ! special
 *.foreground:   #b7b8b9
 *.background:   #0c0d0e
+! *.foreground:   FG
+! *.background:   BG
+
 *.cursorColor:  #b7b8b9
 ! black
 *.color0:       #0c0d0e
 *.color8:       #737475
+! *.color0:       #0c0d0e
+! *.color8:       #333333
 ! red
 *.color1:       #e31a1c
 *.color9:       #e31a1c
+! *.color1:       #825b69
+! *.color9:       #bda0aa
 ! green
 *.color2:       #31a354
 *.color10:      #31a354
+! *.color2:       #69825b
+! *.color10:      #aabda0
 ! yellow
 *.color3:       #dca060
 *.color11:      #dca060
+! *.color3:       #82755b
+! *.color11:      #bdb3a0
 ! blue
 *.color4:       #3182bd
 *.color12:      #3182bd
+! *.color4:       #5b6982
+! *.color12:      #a0aabd
 ! magenta
 *.color5:       #756bb1
 *.color13:      #756bb1
+! *.color5:       #755b82
+! *.color13:      #b3a0bd
 ! cyan
 *.color6:       #80b1d3
 *.color14:      #80b1d3
+! *.color6:       #5b8275
+! *.color14:      #a0bdb3
 ! white
 *.color7:       #b7b8b9
 *.color15:      #fcfdfe
+! *.color7:       #d9d7cc
+! *.color15:      #e5e5e5
 
 !##############
 !#    XPDF    #
@@ -82,6 +104,7 @@ xpdf.matteColor: #1d1f21
 xpdf.toolTipEnable: false
 xpdf*Foreground: white
 xpdf*Background: #1d1f21
+xpdf*font: -*-courier-medium-o-normal--12-*-*-*-*-*-iso8859-1
 
 !##############
 !#   Fonts    #
@@ -143,3 +166,14 @@ xnotify.foreground : White
 xnotify.border     : green
 xnotify.borderWidth: 1
 xnotify.gap        : 10
+
+!################
+!#  QConsole    #
+!################
+! qconsole*background     : #d9d5ba
+! qconsole*foreground     : #444444
+qconsole*background     : #000000
+qconsole*foreground     : #fafafa
+qconsole*internalBorder : 2
+qconsole*utmpInhibit    : true
+qconsole*rightScrollBar : true

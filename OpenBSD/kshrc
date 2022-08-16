@@ -35,6 +35,12 @@ alias __Y=`echo "\005"`     # end = ^e = end of line
 alias news="newsboat"
 alias drcctl="doas rcctl"
 
+function fzf-hist {
+  RES=$(fzf --tac --no-sort -e < $HISTFILE)
+  test -n "$RES" || exit 0
+  eval "$RES"
+}
+
 stty stop undef
 stty start undef
 
@@ -42,6 +48,8 @@ stty start undef
 # Also need to set XTerm*deleteIsDEL to false on Xdefaults
 bind -m '^X3'=^X
 bind '^X~'=delete-char-forward
+# Replace CTRL+R to use FZF
+#bind -m ^R=fzf-hist^J
 
 set -A complete_ifconfig_1 -- $(ifconfig | grep ^[a-z] | cut -d: -f1)
 set -A complete_sndioctl_1 -- $(sndioctl | cut -d= -f1)

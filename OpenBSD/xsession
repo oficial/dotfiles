@@ -1,7 +1,5 @@
-# Screen light level 50%
 xbacklight -set 100 &
 
-# Keyboard layout (pt_BR)
 setxkbmap br &
 
 # Wallpaper pattern
@@ -21,21 +19,23 @@ xsetroot -mod 8 8 -bg \#101010 &
 # Notifications daemon
 rm -rf /tmp/xnotify.fifo
 mkfifo -m 666 /tmp/xnotify.fifo
+pkill xnotify
 xnotify -m 0 -G NE -g -10+10 -s 5 </tmp/xnotify.fifo 3<>/tmp/xnotify.fifo &
 
 # Font path stuff
-xset +fp /usr/local/share/fonts/ghostscript &
-xset +fp /usr/local/share/fonts/adobe-source-code-pro &
-xset +fp /usr/local/share/fonts/adobe-source-sans-pro &
-xset +fp /usr/local/share/fonts/adobe-source-serif-pro &
-xset +fp /usr/local/share/fonts/font-awesome &
-xset +fp /usr/local/share/fonts/roboto &
+xset +fp /usr/local/share/fonts/adobe-source-{code,sans,serif}-pro &
+xset +fp /usr/local/share/fonts/{ghostscript,font-awesome,roboto} &
+xset +fp /usr/X11R6/lib/X11/fonts/{OTF,TTF,75dpi,100dpi} &
 
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
 
 # Applications
 xterm -g 150x34+10+10 -e "tmux -u -2 new -A" &
+xbanish &   # hide pointer while typing
+xdimmer -t 300 -s 20 -b 10 -p 5 -d > /dev/null & # low backlight on inactivity
+qconsole -h 500 -s 9 & # dropdown xterm (CTRL+O)
 
 exec cwm
+# exec blackbox
 

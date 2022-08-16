@@ -3,8 +3,8 @@
 set t_Co=256        "Informa suporte a 256 cores
 set encoding=utf-8
 set fileencoding=utf-8
-set spell spelllang=en,pt
-set spellcapcheck=[.?!]\_[\])'" \t]\+
+" set spell spelllang=en,pt
+" set spellcapcheck=[.?!]\_[\])'" \t]\+
 set ruler           "Mostra linha:coluna
 set signcolumn=yes
 set mouse=a         "Ativa o suporte ao mouse (para selecionar texto p.e.)
@@ -24,7 +24,6 @@ set backspace=indent,eol,start
 set ignorecase      "Buscas case insensitive
 set incsearch       "Destaca resultado da busca enquanto digita
 set hlsearch        "Destaca todas as ocorrências da busca
-set showmatch       "Mostra o casamento de {}, [] e ()
 set nobackup        "Desabilita o uso de arquivos de backup
 set autoread        "Recarrega arquivo se alterado externamente
 set nostartofline   "Permanece na mesma coluna ao mudar de linha
@@ -61,7 +60,7 @@ set confirm
 set history=2000
 set timeoutlen=500
 set updatetime=300
-set showmatch       " Jump to matching bracket
+set showmatch       " Show the matching bracket, paren etc
 set matchpairs+=<:> " Add HTML brackets to pair matching
 set matchtime=1     " Tenths of a second to show the matching paren
 set list
@@ -72,7 +71,7 @@ set statusline= "Limpa qualquer definição anterior
 set statusline+=%#LineNr#               "Seta a cor do grupo 'LineNr'
 set statusline+=%f                      "Path do arquivo no buffer atual
 set statusline+=\ %m                    "Flag indicando se o arquivo foi modificado '[+]'
-" set statusline+=\[%{FugitiveHead()}\]  "Indica o branch do arquivo atual
+set statusline+=\[%{FugitiveStatusline()}\]  "Indica o branch do arquivo atual
 set statusline+=%=                      "Marca o fim dos itens alinhados a esquerda e inicio dos alinhados a direita
 set statusline+=%#Special#              "Seta a cor do grupo 'Special'
 set statusline+=\ %y                    "Espaço em branco e o tipo do arquivo
@@ -101,15 +100,13 @@ let g:rustfmt_autosave = 1
 let g:cargo_makeprg_params = 'build --release --message-format short'
 
 " FZF.vim
-" Size and border color
+let $FZF_DEFAULT_COMMAND="rg --files  --hidden -g '!{.cache/**,music/**,games/**,**/.git/**}'"
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8, 'highlight': 'Todo' } }
-" let g:fzf_preview_window = 'right:50%'
-" Border style (sharp corner)
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:false } }
+let g:fzf_preview_window = 'right:50%'
+
 
 let g:markdown_fenced_languages = ['python','javascript']
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-" let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 
 "}}}
 
@@ -210,5 +207,5 @@ highlight yamlKey    ctermbg=black ctermfg=244
 highlight SignifySignAdd ctermbg=black ctermfg=green
 highlight SignifySignDelete ctermbg=black ctermfg=red
 highlight SignifySignChange ctermbg=black ctermfg=yellow
-
+highlight MatchParen cterm=bold ctermbg=none ctermfg=red
 "}}}

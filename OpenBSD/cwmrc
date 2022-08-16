@@ -99,5 +99,5 @@ command Reboot     "doas reboot"
 
 # ignore "xload"
 # ignore "xclock"
-ignore "xconsole"
+# ignore "xconsole"
 
