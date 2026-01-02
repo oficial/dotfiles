@@ -19,4 +19,5 @@ alias gll='git log -10'
 alias glc='git log --color --oneline --name-status -10'
 alias gs='git status --untracked-files=no'
 alias gss='git status'
-alias gr='git pull --rebase origin master'
+alias gr='git pull --rebase --autostash origin master'
+alias rankmirrors="sudo reflector -c 'Brazil' -a 12 --sort rate --save /etc/pacman.d/mirrorlist"

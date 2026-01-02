@@ -1,5 +1,5 @@
 #!/bin/sh
-git_branch () {
+git_branch() {
   GB=$(git branch 2>/dev/null | grep '^*' | colrm 1 2)
   [ -z "$GB" ] && echo "" || echo -e " \uE0A0 $GB"
 }
@@ -20,9 +20,10 @@ HISTCONTROL="erasedups"
 HISTTIMEFORMAT='%F %T '
 
 # Some custom PATH entries
-export PATH=/home/ricardo/bin:/home/ricardo/bin/vim/bin:$PATH
-export EDITOR=vim
+export PATH=/home/ricardo/.local/bin:$PATH
+export EDITOR=nvim
 export PAGER=less
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # Configure bash tab-completion
 bind "set completion-ignore-case on"
@@ -36,24 +37,24 @@ bind '"\e[C": forward-char'
 bind '"\e[D": backward-char'
 
 # Prepend "cd " to directory names automatically
-shopt -s autocd 2> /dev/null
+shopt -s autocd 2>/dev/null
 
 # Correct spelling errors during tab-completion
-shopt -s dirspell 2> /dev/null
+shopt -s dirspell 2>/dev/null
 
 # Correct spelling errors in arguments supplied to cd
-shopt -s cdspell 2> /dev/null
+shopt -s cdspell 2>/dev/null
 
 # Append to the history file
 shopt -s histappend
 
 # Allow folder recursion using  **
-shopt -s globstar 2> /dev/null
+shopt -s globstar 2>/dev/null
 
 # Consider multiline command as a single entry in history
 shopt -s cmdhist
 
-PROMPT_COMMAND="history -a; history -n";
+PROMPT_COMMAND="history -a; history -n"
 
 # Use LESS as manual paginator
 export MANPAGER="less -S"
@@ -70,7 +71,7 @@ fi
 
 # Put some colors on manpages
 man() {
-    env LESS_TERMCAP_mb=$'\E[01;31m' \
+  env LESS_TERMCAP_mb=$'\E[01;31m' \
     LESS_TERMCAP_md=$'\E[01;38;5;74m' \
     LESS_TERMCAP_me=$'\E[0m' \
     LESS_TERMCAP_se=$'\E[0m' \
@@ -88,6 +89,5 @@ man() {
 
 # Machine specific configs (not tracked in Git)
 if [ -f ~/.bash_local ]; then
-    .  ~/.bash_local
+  . ~/.bash_local
 fi
-
